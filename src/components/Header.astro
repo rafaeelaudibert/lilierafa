@@ -1,0 +1,94 @@
+---
+import { WEDDING_CONFIG } from "../constants/wedding.ts"
+---
+
+<header
+  id="header-nav"
+  class="w-full fixed top-0 left-0 z-50 backdrop-blur transition-all duration-300"
+>
+  <div class="max-w-6xl mx-auto px-4 py-4">
+    <div class="flex flex-row justify-between sm:grid grid-cols-3 items-center">
+      <div class="hidden sm:flex justify-start gap-4">
+        {
+          WEDDING_CONFIG.navigation.map((link) => (
+            <a href={link.href} class="nav-link transition-colors duration-300">
+              {link.label}
+            </a>
+          ))
+        }
+      </div>
+      <div class="flex justify-center">
+        <a
+          id="header-logo"
+          href="#hero-reference"
+          class="font-semibold text-gray-800 transition-all opacity-0 duration-600"
+          >{WEDDING_CONFIG.couple.them}</a
+        >
+      </div>
+      <div class="flex justify-end">
+        <a
+          href="#rsvp"
+          id="header-button"
+          class="px-4 py-2 rounded-full text-sm transition-all duration-300"
+        >
+          I'm coming!
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  const headerLogo = document.getElementById("header-logo")!
+  const navLinks = document.querySelectorAll(".nav-link")!
+  const headerButton = document.getElementById("header-button")!
+
+  function updateHeaderStyles() {
+    const scrollY = window.scrollY
+    const threshold = window.innerHeight - 100 // 100dvh equivalent
+
+    if (scrollY < threshold) {
+      // Initial state: white text, transparent background
+      navLinks.forEach((link) => {
+        link.classList.remove("text-gray-800")
+        link.classList.add("text-white")
+      })
+      headerLogo.classList.add("opacity-0")
+      headerLogo.classList.remove("opacity-100")
+      headerButton.classList.remove(
+        "bg-gray-800",
+        "text-white",
+        "hover:bg-gray-700"
+      )
+      headerButton.classList.add(
+        "bg-white",
+        "text-slate-600",
+        "hover:bg-gray-100"
+      )
+    } else {
+      // Scrolled state: original colors
+      navLinks.forEach((link) => {
+        link.classList.remove("text-white")
+        link.classList.add("text-gray-800")
+      })
+      headerLogo.classList.remove("opacity-0")
+      headerLogo.classList.add("opacity-100")
+      headerButton.classList.remove(
+        "bg-white",
+        "text-slate-600",
+        "hover:bg-gray-100"
+      )
+      headerButton.classList.add(
+        "bg-gray-800",
+        "text-white",
+        "hover:bg-gray-700"
+      )
+    }
+  }
+
+  // Initial call
+  updateHeaderStyles()
+
+  // Listen for scroll events
+  window.addEventListener("scroll", updateHeaderStyles)
+</script>

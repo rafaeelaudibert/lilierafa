@@ -1,0 +1,34 @@
+---
+import { WEDDING_CONFIG } from "../constants/wedding.ts"
+---
+
+<section
+  id="hero"
+  class="h-screen w-full fixed top-0 left-0 z-0"
+  style="background-image: url('https://picsum.photos/seed/lilierafa/1920/1080'); background-size: cover; background-position: center; background-repeat: no-repeat;"
+>
+  <!-- Background overlay for better text readability -->
+  <div class="absolute inset-0 bg-black/40"></div>
+
+  <!-- Text content -->
+  <div class="relative z-10 h-full flex items-end justify-center pb-12">
+    <div class="text-center max-w-6xl mx-auto px-4">
+      <!-- Top row with smaller text -->
+      <div class="flex justify-between items-start mb-8">
+        <div class="text-white text-md font-light">
+          <p>We're getting married</p>
+        </div>
+        <div class="text-white text-md font-light">
+          <p>{WEDDING_CONFIG.wedding.dow}, {WEDDING_CONFIG.wedding.date}</p>
+        </div>
+      </div>
+
+      <!-- Main names at bottom -->
+      <h1 class="text-[12rem] font-bold text-white leading-none">
+        {WEDDING_CONFIG.couple.her}
+        <span class="text-[var(--beige)]">&</span>
+        {WEDDING_CONFIG.couple.him}
+      </h1>
+    </div>
+  </div>
+</section>

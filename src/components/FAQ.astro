@@ -1,0 +1,121 @@
+---
+import { WEDDING_CONFIG } from "../constants/wedding.ts"
+---
+
+<section id="faq" class="py-20">
+  <!-- Hearts decoration -->
+  <div class="text-center mb-8">
+    <div class="text-gray-400 text-2xl">♥ ♥ ♥</div>
+  </div>
+
+  <!-- Section heading -->
+  <div class="text-center mb-16">
+    <h2 class="text-4xl md:text-5xl font-bold text-gray-800 leading-tight">
+      You also might be<br />
+      <span class="text-[#8B7355]">wondering...</span>
+    </h2>
+  </div>
+
+  <!-- FAQ items - more constrained width -->
+  <div class="max-w-2xl mx-auto">
+    <div class="space-y-0">
+      {
+        WEDDING_CONFIG.faq.map((item, index) => (
+          <div class="faq-item border-b border-gray-200 py-6">
+            <button
+              class="faq-question w-full flex justify-between items-center text-left group cursor-pointer"
+              data-faq-toggle
+            >
+              <span class="text-gray-800 font-medium">{item.question}</span>
+              <svg
+                class="faq-icon w-6 h-6 text-gray-600 transition-all duration-300 ease-in-out group-hover:text-[#8B7355]"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                />
+              </svg>
+            </button>
+            <div class="faq-answer mt-4 text-gray-600 leading-relaxed max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+              <p>{item.answer}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  /* FAQ Toggle Styles */
+  .faq-item[data-open] .faq-answer {
+    max-height: 200px; /* Adjust based on content */
+  }
+
+  .faq-item[data-open] .faq-icon {
+    transform: rotate(45deg);
+  }
+
+  /* Smooth transitions for all interactive elements */
+  .faq-question {
+    transition: all 0.2s ease-in-out;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    margin: -0.75rem;
+  }
+
+  .faq-question:hover {
+    background-color: rgba(139, 115, 85, 0.05);
+    transform: translateX(2px);
+  }
+
+  .faq-question:active {
+    background-color: rgba(139, 115, 85, 0.1);
+    transform: translateX(1px);
+  }
+
+  .faq-answer {
+    transition:
+      max-height 0.3s ease-in-out,
+      opacity 0.3s ease-in-out;
+    opacity: 0;
+  }
+
+  .faq-item[data-open] .faq-answer {
+    opacity: 1;
+  }
+</style>
+
+<script>
+  // Clean, minimal JavaScript for FAQ toggle
+  document.addEventListener("DOMContentLoaded", function () {
+    const faqButtons = document.querySelectorAll("[data-faq-toggle]")
+
+    faqButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const faqItem = button.closest(".faq-item")!
+        const isOpen = faqItem.hasAttribute("data-open")
+
+        // Close all other FAQ items
+        document.querySelectorAll(".faq-item[data-open]").forEach((item) => {
+          if (item !== faqItem) {
+            item.removeAttribute("data-open")
+          }
+        })
+
+        // Toggle current item
+        if (isOpen) {
+          faqItem.removeAttribute("data-open")
+        } else {
+          faqItem.setAttribute("data-open", "")
+        }
+      })
+    })
+  })
+</script>

@@ -1,0 +1,67 @@
+---
+import QRCode from "qrcode"
+---
+
+<section id="gifts" class="py-20">
+  <!-- Gift information card -->
+  <div
+    class="bg-[#3e4034] text-gray-100 rounded-lg p-12 text-center max-w-4xl mx-auto"
+  >
+    <div class="text-sm uppercase tracking-wide mb-4">Wedding Gifts</div>
+
+    <h3 class="text-3xl md:text-4xl font-bold mb-6 leading-tight">
+      Your presence is enough
+    </h3>
+
+    <p class="text-md mb-8 leading-relaxed">
+      Truly. We're just happy to celebrate with you. If you'd like to give
+      something, we'd love a contribution to our honeymoon. Please, no physical
+      gifts - we'd prefer monetary contributions if you choose to give anything
+      at all.
+    </p>
+
+    <!-- QR Code -->
+    <div class="mb-4">
+      <a
+        href="https://nubank.com.br/cobrar/26alg/68c75457-71d3-4731-b3db-27981650a675"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <canvas id="pix-qr-code" class="mx-auto bg-white p-2 rounded-lg"
+        ></canvas>
+      </a>
+    </div>
+
+    <p class="text-xs mt-6 opacity-80">
+      Send as much or as little as you'd like, or nothing at all. We're just
+      grateful you're celebrating with us.
+    </p>
+  </div>
+</section>
+
+<script>
+  import QRCode from "qrcode"
+
+  // Generate QR code with PIX data
+  const pixData =
+    "00020126710014BR.GOV.BCB.PIX0136a89509a5-da6e-4bf3-b83d-26f16563a6d90209Honeymoon5204000053039865802BR5924Rafael Baldasso Audibert6009SAO PAULO62140510Lkc8I56Cra63046E51"
+  const canvas = document.getElementById("pix-qr-code")
+
+  if (canvas) {
+    QRCode.toCanvas(
+      canvas,
+      pixData,
+      {
+        width: 150,
+        margin: 2,
+        color: {
+          dark: "#000000",
+          light: "#FFFFFF",
+        },
+      },
+      function (error) {
+        if (error) console.error("QR Code generation error:", error)
+      }
+    )
+  }
+</script>

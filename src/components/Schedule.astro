@@ -1,0 +1,66 @@
+---
+import { WEDDING_CONFIG } from "../constants/wedding.ts"
+---
+
+<section id="schedule" class="py-20">
+  <!-- Section label and heading - constrained width -->
+  <div class="max-w-6xl mx-auto px-4 mb-16">
+    <div class="text-gray-400 text-sm uppercase tracking-wide mb-2">
+      Schedule
+    </div>
+    <h2 class="text-4xl md:text-5xl font-bold text-gray-800 leading-tight">
+      The day of our<br />
+      <span class="text-[#8B7355]">celebration</span>
+    </h2>
+  </div>
+
+  <!-- Horizontal Scrollable Timeline - full width -->
+  <div class="relative w-full">
+    <!-- Scrollable timeline container -->
+    <div class="overflow-x-auto pb-4">
+      <div class="flex gap-12 min-w-max px-8 justify-center">
+        <!-- Timeline line - positioned relative to content -->
+        <div
+          class="absolute top-1/2 left-8 right-8 h-0.5 bg-gray-300 transform -translate-y-1/2 pointer-events-none"
+        >
+        </div>
+
+        {
+          WEDDING_CONFIG.schedule.map((item, index) => {
+            return (
+              <div class="flex-shrink-0 w-72 text-center relative z-10">
+                <div class="bg-white rounded-lg shadow-lg border border-gray-100 overflow-hidden h-96 flex flex-col">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    class="w-full h-48 object-cover"
+                  />
+                  <div class="p-6 flex-grow flex flex-col justify-between">
+                    <div class="text-2xl font-bold text-[#8B7355] mb-2">
+                      {item.time}
+                    </div>
+                    <h3 class="font-bold text-gray-800 text-lg mb-2">
+                      {item.title}
+                    </h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                      {item.description}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            )
+          })
+        }
+      </div>
+    </div>
+  </div>
+
+  <!-- Additional info -->
+  <div class="mt-16 text-center">
+    <p class="text-gray-600 text-lg max-w-2xl mx-auto leading-relaxed">
+      The celebration will take place throughout the day at {
+        WEDDING_CONFIG.venue.name
+      }. We can't wait to share this special day with you!
+    </p>
+  </div>
+</section>

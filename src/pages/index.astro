@@ -1,8 +1,42 @@
 ---
-import Welcome from "../components/Welcome.astro"
+import Header from "../components/Header.astro"
+import Hero from "../components/Hero.astro"
+import Location from "../components/Location.astro"
+import Schedule from "../components/Schedule.astro"
+import Gifts from "../components/Gifts.astro"
+import RSVP from "../components/RSVP.astro"
+import FAQ from "../components/FAQ.astro"
+import Footer from "../components/Footer.astro"
 import Layout from "../layouts/Layout.astro"
 ---
 
 <Layout>
-  <Welcome />
+  <!-- Fixed Header -->
+  <Header />
+
+  <!-- Fixed Hero Background -->
+  <Hero />
+  <div id="hero-reference" class="h-[1px] relative"></div>
+
+  <!-- Scrollable Content -->
+  <main
+    class="relative z-10 bg-[var(--beige)] min-h-screen mt-[100vh] mb-[20vh]"
+  >
+    <!-- First width-constrained section -->
+    <div class="max-w-6xl mx-auto px-4">
+      <Location />
+    </div>
+
+    <!-- Full-width Schedule section -->
+    <Schedule />
+
+    <!-- Second width-constrained section -->
+    <div class="max-w-6xl mx-auto px-4">
+      <Gifts />
+      <RSVP />
+      <FAQ />
+    </div>
+
+    <Footer />
+  </main>
 </Layout>

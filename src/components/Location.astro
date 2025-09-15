@@ -1,0 +1,59 @@
+---
+import { WEDDING_CONFIG } from "../constants/wedding.ts"
+---
+
+<section id="location" class="py-20">
+  <div class="text-center mb-8">
+    <div class="text-gray-400 text-2xl">♥ ♥ ♥</div>
+  </div>
+
+  <div class="text-center mb-16">
+    <p class="text-gray-600 text-lg max-w-3xl mx-auto leading-relaxed">
+      We're getting married! And we're so excited to celebrate our day with you.
+      On this page, you'll find everything you need to know – schedule,
+      location, dress code, accommodation – and you can RSVP directly here. See
+      you in lovely Vale dos Vinhedos!
+    </p>
+  </div>
+
+  <div class="mb-12">
+    <div class="flex justify-between items-start mb-8">
+      <div>
+        <div class="text-gray-400 text-sm uppercase tracking-wide mb-2">
+          Location
+        </div>
+        <h2 class="text-4xl md:text-5xl font-bold text-gray-800 leading-tight">
+          We'll see you at<br />
+          <span class="text-[#8B7355]">{WEDDING_CONFIG.venue.name}</span>
+        </h2>
+      </div>
+      <a
+        href={WEDDING_CONFIG.venue.url}
+        class="bg-gray-800 text-white px-6 py-3 rounded-lg text-sm hover:bg-gray-700 transition-colors"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Find on Google Maps
+      </a>
+    </div>
+
+    <div class="mb-12">
+      <img
+        src={WEDDING_CONFIG.venue.image}
+        alt={`${WEDDING_CONFIG.venue.name} venue`}
+        class="w-full h-96 object-cover rounded-lg shadow-lg"
+      />
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      {
+        WEDDING_CONFIG.venue.cards.map((card) => (
+          <div>
+            <h3 class="font-bold text-gray-800 text-lg mb-3">{card.label}</h3>
+            <p class="text-gray-600 leading-relaxed">{card.description}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

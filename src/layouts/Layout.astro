@@ -1,5 +1,8 @@
 ---
 import "../styles/global.css"
+import Posthog from "../components/posthog.astro"
+
+const TITLE = "Lili & Rafa - 25.04.2026"
 ---
 
 <!doctype html>
@@ -7,14 +10,38 @@ import "../styles/global.css"
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
     <meta name="generator" content={Astro.generator} />
-    <title>Lili & Rafa - 25.04.2026</title>
+    <meta name="description" content={TITLE} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --font-libre-caslon-text: "Libre Caslon Text", serif;
+      }
+      html,
+      body {
+        font-family: var(--font-libre-caslon-text), serif;
+      }
+    </style>
+
+    <title>{TITLE}</title>
   </head>
   <body>
     <slot />
   </body>
 </html>
+
+<Posthog />
 
 <style>
   html,
