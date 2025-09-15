@@ -1,6 +1,7 @@
 interface Config {
   callout: string
   longCallout: string
+  cta: string
   couple: {
     her: string
     him: string
@@ -95,7 +96,9 @@ export type Locale = "en" | "pt"
 export const WEDDING_CONFIG: Record<Locale, Config> = {
   en: {
     callout: "We're getting married!",
-    longCallout: "We're getting married! And we're so excited to celebrate our day with you. On this page, you'll find everything you need to know – schedule, location, dress code, accommodation – and you can RSVP directly here. See you in lovely Vale dos Vinhedos!",
+    longCallout:
+      "We're getting married! And we're so excited to celebrate our day with you. On this page, you'll find everything you need to know – schedule, location, dress code, accommodation – and you can RSVP directly here. See you in lovely Vale dos Vinhedos!",
+    cta: "I'm coming!",
     couple: {
       her: "Lili",
       him: "Rafa",
@@ -257,7 +260,9 @@ export const WEDDING_CONFIG: Record<Locale, Config> = {
   },
   pt: {
     callout: "Vamos nos casar!",
-    longCallout: "Vamos nos casar! E estamos muito ansiosos para celebrar nosso dia com você. Nesta página, você encontrará tudo o que precisa saber – agenda, local, vestimenta – e pode confirmar sua presença diretamente aqui. Ansiosos para te ver no Vale dos Vinhedos!",
+    longCallout:
+      "Vamos nos casar! E estamos muito ansiosos para celebrar nosso dia com você. Nesta página, você encontrará tudo o que precisa saber – agenda, local, vestimenta – e pode confirmar sua presença diretamente aqui. Ansiosos para te ver no Vale dos Vinhedos!",
+    cta: "Vou comparecer!",
     couple: {
       her: "Lili",
       him: "Rafa",
