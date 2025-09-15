@@ -2,7 +2,7 @@
 import { WEDDING_CONFIG } from "../constants/wedding"
 ---
 
-<footer class="bg-gray-800 text-white py-16">
+<footer class="bg-gray-800 text-white pt-16 pb-8">
   <div class="max-w-6xl mx-auto px-4">
     <div class="grid md:grid-cols-2 gap-12 items-center">
       <!-- Left side - Navigation and info -->
@@ -50,19 +50,27 @@ import { WEDDING_CONFIG } from "../constants/wedding"
         <h4 class="text-lg font-semibold mb-4">Countdown to our big day</h4>
         <div id="countdown" class="flex flex-row gap-4">
           <div class="bg-gray-700 rounded-lg p-4">
-            <div id="days" class="text-2xl font-bold text-[#8B7355]">--</div>
+            <div id="days" class="text-2xl font-bold text-[var(--brown)]">
+              --
+            </div>
             <div class="text-xs text-gray-300 mt-1">Days</div>
           </div>
           <div class="bg-gray-700 rounded-lg p-4">
-            <div id="hours" class="text-2xl font-bold text-[#8B7355]">--</div>
+            <div id="hours" class="text-2xl font-bold text-[var(--brown)]">
+              --
+            </div>
             <div class="text-xs text-gray-300 mt-1">Hours</div>
           </div>
           <div class="bg-gray-700 rounded-lg p-4">
-            <div id="minutes" class="text-2xl font-bold text-[#8B7355]">--</div>
+            <div id="minutes" class="text-2xl font-bold text-[var(--brown)]">
+              --
+            </div>
             <div class="text-xs text-gray-300 mt-1">Minutes</div>
           </div>
           <div class="bg-gray-700 rounded-lg p-4">
-            <div id="seconds" class="text-2xl font-bold text-[#8B7355]">--</div>
+            <div id="seconds" class="text-2xl font-bold text-[var(--brown)]">
+              --
+            </div>
             <div class="text-xs text-gray-300 mt-1">Seconds</div>
           </div>
         </div>
@@ -73,7 +81,10 @@ import { WEDDING_CONFIG } from "../constants/wedding"
     <div
       class="border-t border-gray-700 mt-12 pt-8 text-center text-sm text-gray-400"
     >
-      <p>Made with a lot of ♥ by Rafa, in Porto Alegre, Brazil, 2025</p>
+      <p>
+        Made with a lot of <span aria-label="love" role="img">♥</span> by Rafa,
+        for Lili, in Porto Alegre, Brazil, 2025.
+      </p>
     </div>
   </div>
 </footer>

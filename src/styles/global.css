@@ -2,9 +2,11 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 100px; /* Account for fixed header height */
 
   --gold: #d4c4a8;
   --beige: #f5f1eb;
+  --brown: #8b7355;
 }
 
 /* Custom scrollbar styling */
