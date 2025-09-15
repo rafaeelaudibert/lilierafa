@@ -4,8 +4,6 @@ import { getLocale } from "astro-i18n-aut"
 
 const locale = getLocale(Astro.url) as Locale
 const config = WEDDING_CONFIG[locale]
-
-console.log(Astro.url, locale, config)
 ---
 
 <header
