@@ -113,7 +113,7 @@ export const WEDDING_CONFIG: Record<Locale, Config> = {
       rsvpDeadline: "March 25",
     },
     contact: {
-      email: "rafaeelaudibert+casamento@gmail.com",
+      email: "rafaeelaudibert@gmail.com",
       phone: "+55 54 99645 5959",
     },
     navigation: [
@@ -277,7 +277,7 @@ export const WEDDING_CONFIG: Record<Locale, Config> = {
       rsvpDeadline: "25 de Março",
     },
     contact: {
-      email: "rafaeelaudibert+casamento@gmail.com",
+      email: "rafaeelaudibert@gmail.com",
       phone: "+55 54 99645 5959",
     },
     navigation: [
