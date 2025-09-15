@@ -1,6 +1,7 @@
 ---
 import { WEDDING_CONFIG, type Locale } from "../constants/wedding"
 import { getLocale } from "astro-i18n-aut"
+import ScrollIndicator from "./ScrollIndicator.astro"
 
 const locale = getLocale(Astro.url) as Locale
 const config = WEDDING_CONFIG[locale]
@@ -55,4 +56,6 @@ const config = WEDDING_CONFIG[locale]
       </div>
     </div>
   </div>
+
+  <ScrollIndicator />
 </section>

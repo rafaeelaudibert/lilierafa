@@ -1,0 +1,53 @@
+---
+
+---
+
+<div
+  class="absolute md:opacity-0 transition-opacity duration-300 bottom-12 md:bottom-18 right-8 z-20"
+  id="scroll-indicator"
+>
+  <a
+    href="#callout"
+    class="flex flex-col items-center text-white/80 hover:text-white transition-colors duration-300 cursor-pointer group"
+    aria-label="Scroll to the next section"
+  >
+    <span class="text-sm font-light mb-2 tracking-wider">SCROLL</span>
+
+    <!-- Desktop: Mouse scroll indicator -->
+    <div
+      class="hidden md:flex w-6 h-10 border-2 border-white/60 rounded-full justify-center group-hover:border-white transition-colors duration-300"
+    >
+      <div
+        class="w-1 h-3 bg-white/60 rounded-full mt-2 animate-bounce group-hover:bg-white transition-colors duration-300"
+      >
+      </div>
+    </div>
+
+    <!-- Mobile: Swipe down indicator -->
+    <div class="md:hidden flex flex-col items-center">
+      <div
+        class="w-8 h-8 border-2 border-white/60 rounded-full flex items-center justify-center group-hover:border-white transition-colors duration-300"
+      >
+        <svg
+          class="w-4 h-4 text-white/60 group-hover:text-white animate-bounce transition-colors duration-300"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+        </svg>
+      </div>
+    </div>
+  </a>
+</div>
+
+<script>
+  const scrollIndicator = document.getElementById("scroll-indicator")!
+  setTimeout(() => {
+    scrollIndicator.classList.remove("opacity-0")
+  }, 3000)
+</script>

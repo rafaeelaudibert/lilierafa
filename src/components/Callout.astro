@@ -1,0 +1,18 @@
+---
+import { WEDDING_CONFIG, type Locale } from "../constants/wedding"
+import { getLocale } from "astro-i18n-aut"
+import Hearts from "./Hearts.astro"
+
+const locale = getLocale(Astro.url) as Locale
+const config = WEDDING_CONFIG[locale]
+---
+
+<section id="callout" class="pt-20 pb-8">
+  <Hearts />
+
+  <div class="text-center">
+    <p class="text-gray-600 text-xl max-w-3xl mx-auto leading-relaxed">
+      {config.longCallout}
+    </p>
+  </div>
+</section>
