@@ -1,7 +1,11 @@
 ---
 import EmailIcon from "../assets/email.svg"
 import PhoneIcon from "../assets/phone.svg"
-import { WEDDING_CONFIG } from "../constants/wedding"
+import { WEDDING_CONFIG, type Locale } from "../constants/wedding"
+import { getLocale } from "astro-i18n-aut"
+
+const locale = getLocale(Astro.url) as Locale
+const config = WEDDING_CONFIG[locale]
 ---
 
 <section class="py-20">
@@ -22,18 +26,15 @@ import { WEDDING_CONFIG } from "../constants/wedding"
           RSVP
         </div>
         <h2 class="text-4xl md:text-5xl font-bold text-gray-800 leading-tight">
-          Let us know you're<br />
-          <span class="text-[var(--brown)]">coming</span>
+          {config.rsvp.title}<br />
+          <span class="text-[var(--brown)]">{config.rsvp.detail}</span>
         </h2>
       </div>
 
       <!-- Instructions and contact info -->
       <div class="mb-8">
         <p class="text-gray-600 text-sm mb-6">
-          Please RSVP no later than <strong
-            >{WEDDING_CONFIG.wedding.rsvpDeadline}</strong
-          >. Fill in the form below and let us know about any dietary needs or
-          questions.
+          {config.rsvp.description}
         </p>
 
         <!-- Contact info -->
@@ -41,19 +42,19 @@ import { WEDDING_CONFIG } from "../constants/wedding"
           <div class="flex items-center gap-2">
             <EmailIcon />
             <a
-              href={`mailto:${WEDDING_CONFIG.contact.email}`}
+              href={`mailto:${config.contact.email}`}
               class="underline hover:text-gray-800 transition-colors"
             >
-              {WEDDING_CONFIG.contact.email}
+              {config.contact.email}
             </a>
           </div>
           <div class="flex items-center gap-2">
             <PhoneIcon />
             <a
-              href={`tel:${WEDDING_CONFIG.contact.phone.replace(/\s/g, "")}`}
+              href={`tel:${config.contact.phone.replace(/\s/g, "")}`}
               class="underline hover:text-gray-800 transition-colors"
             >
-              {WEDDING_CONFIG.contact.phone}
+              {config.contact.phone}
             </a>
           </div>
         </div>
@@ -67,7 +68,7 @@ import { WEDDING_CONFIG } from "../constants/wedding"
             for="name"
             class="block text-sm font-medium text-gray-700 mb-2"
           >
-            Name *
+            {config.rsvp.name.label} *
           </label>
           <input
             type="text"
@@ -75,7 +76,7 @@ import { WEDDING_CONFIG } from "../constants/wedding"
             name="name"
             required
             class="w-full px-4 py-3 bg-[#F5F1EB] border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--brown)] focus:border-transparent transition-colors"
-            placeholder="Your full name"
+            placeholder={config.rsvp.name.placeholder}
           />
         </div>
 
@@ -85,7 +86,7 @@ import { WEDDING_CONFIG } from "../constants/wedding"
             for="email"
             class="block text-sm font-medium text-gray-700 mb-2"
           >
-            Email *
+            {config.rsvp.email.label} *
           </label>
           <input
             type="email"
@@ -93,7 +94,7 @@ import { WEDDING_CONFIG } from "../constants/wedding"
             name="email"
             required
             class="w-full px-4 py-3 bg-[#F5F1EB] border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--brown)] focus:border-transparent transition-colors"
-            placeholder="your.email@example.com"
+            placeholder={config.rsvp.email.placeholder}
           />
         </div>
 
@@ -103,15 +104,14 @@ import { WEDDING_CONFIG } from "../constants/wedding"
             for="dietary"
             class="block text-sm font-medium text-gray-700 mb-2"
           >
-            Additional information & questions
+            {config.rsvp.extra.label}
           </label>
           <textarea
             id="dietary"
             name="dietary"
             rows="4"
             class="w-full px-4 py-3 bg-[#F5F1EB] border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--brown)] focus:border-transparent transition-colors resize-none"
-            placeholder="Any information we should know, or questions you might have..."
-          ></textarea>
+            placeholder={config.rsvp.extra.placeholder}></textarea>
         </div>
 
         <!-- Submit button -->
@@ -119,7 +119,7 @@ import { WEDDING_CONFIG } from "../constants/wedding"
           type="submit"
           class="w-full bg-[var(--brown)] text-white py-3 px-6 rounded-lg font-medium hover:bg-[#7A6248] transition-colors focus:ring-2 focus:ring-[var(--brown)] focus:ring-offset-2"
         >
-          Submit
+          {config.rsvp.submit}
         </button>
       </form>
     </div>
@@ -129,7 +129,7 @@ import { WEDDING_CONFIG } from "../constants/wedding"
       <div class="h-full min-h-[400px] lg:min-h-full">
         <img
           src="https://picsum.photos/seed/rsvp-couple/600/600"
-          alt={WEDDING_CONFIG.couple.them}
+          alt={config.couple.them}
           class="w-full h-full object-cover"
         />
       </div>

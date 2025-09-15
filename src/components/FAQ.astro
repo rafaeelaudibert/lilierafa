@@ -1,18 +1,23 @@
 ---
-import { WEDDING_CONFIG } from "../constants/wedding.ts"
+import { WEDDING_CONFIG, type Locale } from "../constants/wedding.ts"
+import { getLocale } from "astro-i18n-aut"
+import Hearts from "./Hearts.astro"
+
+const locale = getLocale(Astro.url) as Locale
+const config = WEDDING_CONFIG[locale]
 ---
 
 <section id="faq" class="py-20">
   <!-- Hearts decoration -->
   <div class="text-center mb-8">
-    <div class="text-gray-400 text-2xl">♥ ♥ ♥</div>
+    <Hearts />
   </div>
 
   <!-- Section heading -->
   <div class="text-center mb-16">
     <h2 class="text-4xl md:text-5xl font-bold text-gray-800 leading-tight">
-      You also might be<br />
-      <span class="text-[var(--brown)]">wondering...</span>
+      {config.faq.title}<br />
+      <span class="text-[var(--brown)]">{config.faq.detail}</span>
     </h2>
   </div>
 
@@ -20,7 +25,7 @@ import { WEDDING_CONFIG } from "../constants/wedding.ts"
   <div class="max-w-2xl mx-auto">
     <div class="space-y-0">
       {
-        WEDDING_CONFIG.faq.map((item, index) => (
+        config.faq.questions.map((item, index) => (
           <div class="faq-item border-b border-gray-200 py-6">
             <button
               class="faq-question w-full flex justify-between items-center text-left group cursor-pointer"

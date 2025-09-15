@@ -1,0 +1,31 @@
+---
+
+---
+
+<div
+  class="text-gray-400 flex justify-center items-center gap-2"
+  aria-hidden="true"
+>
+  <span class="text-2xl animate-pump" style="animation-delay: 0.1s;">♥</span>
+  <span class="text-4xl animate-pump" style="animation-delay: 0s;">♥</span>
+  <span class="text-2xl animate-pump" style="animation-delay: 0.2s;">♥</span>
+</div>
+
+<style>
+  @keyframes pump {
+    0%,
+    100% {
+      transform: scale(1);
+    }
+    5% {
+      transform: scale(1.2);
+    }
+    10% {
+      transform: scale(1);
+    }
+  }
+  .animate-pump {
+    display: inline-block;
+    animation: pump 3s infinite;
+  }
+</style>

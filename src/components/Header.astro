@@ -1,5 +1,11 @@
 ---
-import { WEDDING_CONFIG } from "../constants/wedding.ts"
+import { WEDDING_CONFIG, type Locale } from "../constants/wedding"
+import { getLocale } from "astro-i18n-aut"
+
+const locale = getLocale(Astro.url) as Locale
+const config = WEDDING_CONFIG[locale]
+
+console.log(Astro.url, locale, config)
 ---
 
 <header
@@ -10,8 +16,11 @@ import { WEDDING_CONFIG } from "../constants/wedding.ts"
     <div class="flex flex-row justify-between sm:grid grid-cols-3 items-center">
       <div class="hidden sm:flex justify-start gap-4">
         {
-          WEDDING_CONFIG.navigation.map((link) => (
-            <a href={link.href} class="nav-link transition-colors duration-600">
+          config.navigation.map((link) => (
+            <a
+              href={link.href}
+              class="nav-link text-white transition-colors duration-600"
+            >
               {link.label}
             </a>
           ))
@@ -22,7 +31,7 @@ import { WEDDING_CONFIG } from "../constants/wedding.ts"
           id="header-logo"
           href="#hero-reference"
           class="font-semibold text-white sm:text-gray-800 transition-all sm:opacity-0 duration-600"
-          >{WEDDING_CONFIG.couple.them}</a
+          >{config.couple.them}</a
         >
       </div>
       <div class="flex justify-end">

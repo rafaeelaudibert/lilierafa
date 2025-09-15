@@ -2,14 +2,23 @@
 import { defineConfig, envField } from 'astro/config'
 
 import sitemap from '@astrojs/sitemap'
-import tailwindcss from '@tailwindcss/vite';
+import tailwindcss from '@tailwindcss/vite'
+import { i18n, filterSitemapByDefaultLocale } from "astro-i18n-aut/integration"
 
+const DEFAULT_LOCALE = "pt";
+const LOCALES = { en: "en-US", pt: "pt-BR" };
 
 const URL = "https://lilierafa.com.br"
 
 export default defineConfig({
   // Guarantees that we can properly generate the sitemap
   site: URL,
+
+  // Configuration for build
+  trailingSlash: "never",
+  build: {
+    format: "file",
+  },
 
   // On hover, prefetch that link
   prefetch: {
@@ -43,11 +52,18 @@ export default defineConfig({
   },
 
   integrations: [
+    // Guarantee we're supporting pt-BR and en-US
+    i18n({
+      locales: LOCALES,
+      defaultLocale: DEFAULT_LOCALE,
+    }),
     // Build a sitemap to help with SEO
     sitemap({
-      customPages: [
-        `${URL}/llms.txt`, // The plugin doesn't detect non-astro pages by default, so we need to add them manually here
-      ],
+      i18n: {
+        locales: LOCALES,
+        defaultLocale: DEFAULT_LOCALE,
+      },
+      filter: filterSitemapByDefaultLocale({ defaultLocale: DEFAULT_LOCALE }),
     }),
   ]
 })
