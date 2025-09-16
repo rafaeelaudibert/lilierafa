@@ -15,9 +15,9 @@ export default defineConfig({
   site: URL,
 
   // Configuration for build
-  trailingSlash: "never",
+  trailingSlash: "always",
   build: {
-    format: "file",
+    format: "directory",
   },
 
   // On hover, prefetch that link
