@@ -3,6 +3,8 @@ import { WEDDING_CONFIG, type Locale } from "../constants/wedding"
 import { getLocale } from "astro-i18n-aut"
 import ScrollIndicator from "./ScrollIndicator.astro"
 
+import heroImage from "../assets/hero.jpeg"
+
 const locale = getLocale(Astro.url) as Locale
 const config = WEDDING_CONFIG[locale]
 ---
@@ -10,7 +12,7 @@ const config = WEDDING_CONFIG[locale]
 <section
   id="hero"
   class="h-screen w-full fixed top-0 left-0 z-0"
-  style="background-image: url('https://picsum.photos/seed/lilierafa/1920/1080'); background-size: cover; background-position: center; background-repeat: no-repeat;"
+  style={`background-image: url('${heroImage.src}'); background-size: cover; background-position: center; background-repeat: no-repeat;`}
 >
   <!-- Background overlay for better text readability -->
   <div class="absolute inset-0 bg-black/40"></div>

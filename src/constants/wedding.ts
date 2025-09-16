@@ -1,3 +1,10 @@
+import { ImageMetadata } from "astro"
+
+import ceremonyImage from "../assets/ceremony.png"
+import aperitifImage from "../assets/aperitif.png"
+import dinnerImage from "../assets/dinner.png"
+import partyImage from "../assets/party.png"
+
 interface Config {
   callout: string
   longCallout: string
@@ -13,7 +20,6 @@ interface Config {
     time: string
     timezone: string
     fullDate: Date
-    rsvpDeadline: string
   }
   contact: {
     email: string
@@ -29,7 +35,6 @@ interface Config {
     button: string
     name: string
     url: string
-    image: string
     cards: {
       label: string
       description: string
@@ -44,7 +49,7 @@ interface Config {
       time: string
       title: string
       description: string
-      image: string
+      image: ImageMetadata
     }[]
   }
   gifts: {
@@ -61,14 +66,11 @@ interface Config {
       label: string
       placeholder: string
     }
-    email: {
-      label: string
-      placeholder: string
-    }
     extra: {
       label: string
       placeholder: string
     }
+    videoCaption: string
     submit: string
   }
   faq: {
@@ -110,10 +112,9 @@ export const WEDDING_CONFIG: Record<Locale, Config> = {
       time: "16:00",
       timezone: "America/Sao_Paulo", // Brazilian time
       fullDate: new Date("2026-04-25T16:00:00-03:00"), // 4 PM Brazilian time
-      rsvpDeadline: "March 25",
     },
     contact: {
-      email: "rafaeelaudibert@gmail.com",
+      email: "rafael.liliane.casa@gmail.com",
       phone: "+55 54 99645 5959",
     },
     navigation: [
@@ -127,7 +128,6 @@ export const WEDDING_CONFIG: Record<Locale, Config> = {
       button: "Find on Google Maps",
       name: "Vila Fitarelli",
       url: "https://maps.app.goo.gl/Ff65hxMaZGSHgZXSA",
-      image: "https://picsum.photos/seed/vilafitarelli/1200/600",
       cards: [
         {
           label: "The venue",
@@ -158,28 +158,28 @@ export const WEDDING_CONFIG: Record<Locale, Config> = {
           title: "Ceremony",
           description:
             'Join us as we say "I do" in the beautiful garden setting',
-          image: "https://picsum.photos/seed/ceremony/400/250",
+          image: ceremonyImage,
         },
         {
           time: "5:30pm",
           title: "Aperitifs",
           description:
             "Cocktails and (gluten-free) canapés while we take photos on the sunset",
-          image: "https://picsum.photos/seed/aperitif/400/250",
+          image: aperitifImage,
         },
         {
-          time: "7pm",
+          time: "7:30pm",
           title: "Dinner",
           description:
             "A delicious meal shared with our closest family and friends",
-          image: "https://picsum.photos/seed/dinner/400/250",
+          image: dinnerImage,
         },
         {
           time: "9pm",
           title: "Party",
           description:
             "Let's dance the night away and celebrate together with the best music",
-          image: "https://picsum.photos/seed/party/400/250",
+          image: partyImage,
         },
       ],
     },
@@ -187,7 +187,7 @@ export const WEDDING_CONFIG: Record<Locale, Config> = {
       title: "WEDDING GIFTS",
       presence: "Your presence is enough",
       content:
-        "Truly! We're just happy to celebrate with you. If you'd still like to give us something, we'd love a monetary contribution to our honeymoon trip - please, no physical gifts.",
+        "Truly! We're just happy to celebrate with you. If you'd still like to give us something, we'd love a monetary contribution to our honeymoon trip via the PIX code below - or cash.",
       caption:
         "Send as much or as little as you'd like, or nothing at all. We're just grateful you're celebrating with us.",
     },
@@ -196,13 +196,10 @@ export const WEDDING_CONFIG: Record<Locale, Config> = {
       detail: "coming",
       description:
         "Please RSVP no later than March 25. Fill in the form below and let us know about any dietary needs or questions.",
+      videoCaption: "Come enjoy the lovely autumn weather with us!",
       name: {
-        label: "Name",
-        placeholder: "Your full name",
-      },
-      email: {
-        label: "Email",
-        placeholder: "your.email@example.com",
+        label: "Names",
+        placeholder: "Names from all attendees",
       },
       extra: {
         label: "Additional information & questions",
@@ -221,19 +218,14 @@ export const WEDDING_CONFIG: Record<Locale, Config> = {
             "Unfortunately, not. We've put a lot of effort on selecting the venue and the food, so we're limiting the number of guests to the ones included in your invite. If you aren't sure whether someone is included, please ask us.",
         },
         {
-          question: "Are kids welcome?",
-          answer:
-            "We love kids, and we've put some effort into inviting the kids who are dear to us. Due to restrictions on the venue, if a kid is not included in your invite, then you unfortunately won't be able to bring them. We hope you understand and can arrange childcare for the evening. If you're not sure whether someone is included, please ask us.",
-        },
-        {
           question: "What should I wear?",
           answer:
-            "Best men and bridesmaid have received a dress code in their invitations. We're asking everyone else to dress in a way that is comfortable for a wedding. Avoid white, please. Men are welcome to wear a suit, and women are welcome to wear a dress or a pantsuit.",
+            "Groomsmen and bridesmaids have received a dress code with their invitations. For all other guests, we kindly request cocktail attire. <br/><br/>We kindly ask that female guests refrain from wearing white, as this color is reserved exclusively for the bride. With love and respect, please note that guests wearing white will not be allowed to enter. We truly appreciate your understanding.",
         },
         {
-          question: "Will there be gluten-free food?",
+          question: "Will there be gluten-free food? And lactose-free?",
           answer:
-            "Absolutely! As it's known by most, the bride is allergic to gluten, so all of our meals will be gluten-free. Please let us know about any other dietary restrictions in your RSVP.",
+            "Absolutely! As it's known by most, the bride is allergic to gluten, so all of our meals will be gluten-free, with options for lactose-intolerant guests. Please let us know about any other dietary restrictions in your RSVP.",
         },
         {
           question: "Will there be vegetarian/vegan food?",
@@ -242,7 +234,7 @@ export const WEDDING_CONFIG: Record<Locale, Config> = {
         {
           question: "Can I give a speech?",
           answer:
-            "We'd be honored! Please let us know in advance so we can plan the schedule. Keep it short and sweet - we want to keep the party going!",
+            "We'd be honored! Please let the wedding planner know in advance so she can plan the schedule. Keep it short and sweet - we want to keep the party going!",
         },
       ],
     },
@@ -255,13 +247,13 @@ export const WEDDING_CONFIG: Record<Locale, Config> = {
         seconds: "Seconds",
       },
       content:
-        "Made with a lot of ♥ by Rafa, for Lili, in Porto Alegre, Brazil, September 2025.",
+        "Made with a lot of ♥  by Rafa, for Lili, in Porto Alegre, Brazil, September 2025.",
     },
   },
   pt: {
     callout: "Vamos nos casar!",
     longCallout:
-      "Vamos nos casar! E estamos muito ansiosos para celebrar nosso dia com você. Nesta página, você encontrará tudo o que precisa saber – agenda, local, vestimenta – e pode confirmar sua presença diretamente aqui. Ansiosos para te ver no Vale dos Vinhedos!",
+      "Vamos nos casar! E estamos muito ansiosos para celebrar nosso dia com você. Nesta página, você encontrará tudo o que precisa saber – agenda, local, vestimenta – e pode confirmar sua presença diretamente aqui. Ansiosos para nos vermos no Vale dos Vinhedos!",
     cta: "Vou comparecer!",
     couple: {
       her: "Lili",
@@ -274,10 +266,9 @@ export const WEDDING_CONFIG: Record<Locale, Config> = {
       time: "16:00",
       timezone: "America/Sao_Paulo", // Brazilian time
       fullDate: new Date("2026-04-25T16:00:00-03:00"), // 4 PM Brazilian time
-      rsvpDeadline: "25 de Março",
     },
     contact: {
-      email: "rafaeelaudibert@gmail.com",
+      email: "rafael.liliane.casa@gmail.com",
       phone: "+55 54 99645 5959",
     },
     navigation: [
@@ -287,11 +278,10 @@ export const WEDDING_CONFIG: Record<Locale, Config> = {
     ],
     venue: {
       header: "O lugar",
-      title: "Vamos te ver na",
+      title: "Nos vemos na",
       button: "Encontrar no Google Maps",
       name: "Vila Fitarelli",
       url: "https://maps.app.goo.gl/Ff65hxMaZGSHgZXSA",
-      image: "https://picsum.photos/seed/vilafitarelli/1200/600",
       cards: [
         {
           label: "O lugar",
@@ -301,7 +291,7 @@ export const WEDDING_CONFIG: Record<Locale, Config> = {
         {
           label: "Como chegar",
           description:
-            "O local está localizado no interior da cidade e, portanto, você precisará dirigir. O local está a 15 minutos da cidade de Carlos Barbosa via Estrada Velha de Garibaldi, e aproximadamente 2 horas de Porto Alegre via Vale dos Vinhedos. Não há serviço de táxi na área. Há estacionamento suficiente para todos os convidados.",
+            "O local está localizado no interior da cidade e, portanto, você precisará ir dirigindo. O local está a 15 minutos da cidade de Carlos Barbosa via Estrada Velha de Garibaldi, e aproximadamente 2 horas de Porto Alegre via Vale dos Vinhedos. Não há serviço de táxi na área. Há estacionamento suficiente para todos os convidados.",
         },
         {
           label: "Restrições",
@@ -315,34 +305,34 @@ export const WEDDING_CONFIG: Record<Locale, Config> = {
       title: "O dia de nosso",
       detail: "casamento",
       description:
-        "O casamento ocorrerá durante todo o dia na Vila Fitarelli. Não podemos esperar para compartilhar este dia especial conosco!",
+        "O casamento ocorrerá durante todo o dia na Vila Fitarelli. Não podemos esperar para compartilhar este dia especial com você!",
       agenda: [
         {
           time: "16:00",
           title: "Cerimônia",
           description:
             'Junte-se a nós para dizer "Aceito" no lindo jardim da Vila Fitarelli',
-          image: "https://picsum.photos/seed/ceremony/400/250",
+          image: ceremonyImage,
         },
         {
           time: "17:30",
-          title: "Aperitivos",
+          title: "Receptivo",
           description:
             "Coquetéis e canapés (sem glúten) enquanto tiramos fotos no pôr do sol",
-          image: "https://picsum.photos/seed/aperitif/400/250",
+          image: aperitifImage,
         },
         {
-          time: "19:00",
+          time: "19:30",
           title: "Jantar",
           description:
             "Uma deliciosa refeição compartilhada com nossa família e amigos mais próximos",
-          image: "https://picsum.photos/seed/dinner/400/250",
+          image: dinnerImage,
         },
         {
           time: "21:00",
           title: "Festa",
           description: "Vamos dançar a noite toda e celebrar juntos",
-          image: "https://picsum.photos/seed/party/400/250",
+          image: partyImage,
         },
       ],
     },
@@ -350,27 +340,24 @@ export const WEDDING_CONFIG: Record<Locale, Config> = {
       title: "PRESENTES ",
       presence: "Sua presença é o suficiente",
       content:
-        "De verdade! Nós estamos verdadeiramente felizes de apenas celebrar nosso dia com você. Se você ainda assim quiser nos presentear com algo, adoraríamos se pudesse contribuir para a nossa viagem de lua de mel através do código PIX abaixo - por favor, sem presentes físicos, somente contribuições financeiras.",
+        "De verdade! Nós estamos verdadeiramente felizes de apenas celebrar nosso dia com você. Se você ainda assim quiser nos presentear com algo, adoraríamos se pudesse contribuir para a nossa viagem de lua de mel através do código PIX abaixo.",
       caption:
-        "Envie o quanto você quiser - ou nada - de verdade. Nós estamos apenas agradecidos por você estar celebrando conosco.",
+        "Envie o quanto você quiser - ou nada - de verdade. Já estaremos agradecidos apenas de você estar celebrando conosco.",
     },
     rsvp: {
-      title: "Deixe-nos saber que",
-      detail: "você virá",
+      title: "Confirme aqui",
+      detail: "sua presença",
       description:
-        "Por favor, responda até 25 de Março. Preencha o formulário abaixo e nos informe sobre quaisquer restrições alimentares ou perguntas.",
+        "Por favor, responda até 25 de Março. Preencha o formulário abaixo e nos informe sobre quaisquer restrições alimentares ou perguntas que você tiver.",
+      videoCaption: "Venha aproveitar o agradável clima de outono conosco!",
       name: {
-        label: "Nome",
-        placeholder: "Seu nome completo",
-      },
-      email: {
-        label: "Email",
-        placeholder: "seu.email@exemplo.com",
+        label: "Nomes",
+        placeholder: "Nomes dos convidados, como está no convite",
       },
       extra: {
         label: "Informações adicionais & perguntas",
         placeholder:
-          "Qualquer informação que você queira nos informar, ou perguntas que você tenha.",
+          "Qualquer coisa que você queira nos informar, ou perguntas que você tenha.",
       },
       submit: "Enviar",
     },
@@ -381,22 +368,17 @@ export const WEDDING_CONFIG: Record<Locale, Config> = {
         {
           question: "Posso levar um acompanhante?",
           answer:
-            "Infelizmente, não. Nós colocamos muito esforço em selecionar o local e a comida, então estamos limitando o número de convidados para os incluídos em sua convite. Se você não está certo se alguém está incluído, por favor, pergunte-nos.",
-        },
-        {
-          question: "Crianças são bem-vindas?",
-          answer:
-            "Nós amamos crianças, e nos esforçamos para convidar todas as crianças que são queridas por nós. Devido às restrições no local, se uma criança não está incluída em sua convite, então você infelizmente não poderá trazê-la. Esperamos que você entenda a limitação. Se você não está certo se alguém está incluído, por favor, pergunte-nos.",
+            "Independente da idade, caso alguém não esteja incluído em seu convite, infelizmente ele não poderá comparecer. Nos esforçamos em selecionar o local e a comida com muito carinho, porém isso exige que limitemos o número de convidados. Se você não está seguro se alguém está incluído, por favor, pergunte-nos.",
         },
         {
           question: "O que devo vestir?",
           answer:
-            "Padrinhos e madinhas receberam um código de vestimenta em seus convites. Estamos pedindo a todos os outros para se vestirem de forma confortável para o casamento. Evite branco, por favor. Recomendamos vestimenta formal, homens devem utilizar camisa com um terno opcional, enquanto as mulheres são livres para escolher entre vestido ou calça.",
+            "Padrinhos e madinhas receberam um código de vestimenta em seus convites. Aos demais convidados, pedimos que compareçam com traje social ou esporte fino. <br/><br/> Gentilmente solicitamos às convidadas que não utilizem a cor branca, reservada exclusivamente à noiva. Informamos, com todo carinho e respeito, que não será permitida a entrada de convidadas vestindo branco. Contamos com a compreensão de todas.",
         },
         {
-          question: "Há comida sem glúten?",
+          question: "Há comida sem glúten? E sem lactose?",
           answer:
-            "Sim! Como é conhecido por todos, a noiva é alérgica ao glúten, então todas as refeições serão sem glúten. Por favor, nos informe sobre quaisquer outras restrições alimentares em seu RSVP.",
+            "Sim! Como é conhecido por todos, a noiva é alérgica a glúten, então todas as refeições serão sem glúten, com opções para intolerantes à lactose. Por favor, nos informe sobre quaisquer outras restrições alimentares em seu RSVP.",
         },
         {
           question: "Há comida vegetariana/vegana?",
@@ -405,7 +387,7 @@ export const WEDDING_CONFIG: Record<Locale, Config> = {
         {
           question: "Posso fazer um discurso?",
           answer:
-            "Claro! Por favor, informe a organizadora do casamento com antecipação para que possamos planejar a agenda. Mantenha-o curto e suave - queremos manter a festa viva!",
+            "Claro! Por favor, informe a organizadora do casamento com antecipação para que ela possa planejar a agenda.",
         },
       ],
     },
@@ -418,7 +400,7 @@ export const WEDDING_CONFIG: Record<Locale, Config> = {
         seconds: "Segundos",
       },
       content:
-        "Feito com muito ♥ por Rafa, para Lili, em Porto Alegre, Brasil, Setembro 2025.",
+        "Feito com muito ♥  por Rafa, para Lili, em Porto Alegre, Brasil, Setembro 2025.",
     },
   },
 }

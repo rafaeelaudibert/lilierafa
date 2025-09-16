@@ -1,5 +1,4 @@
 ---
-import QRCode from "qrcode"
 import { WEDDING_CONFIG, type Locale } from "../constants/wedding"
 import { getLocale } from "astro-i18n-aut"
 
@@ -7,7 +6,7 @@ const locale = getLocale(Astro.url) as Locale
 const config = WEDDING_CONFIG[locale]
 ---
 
-<section id="gifts" class="py-20">
+<section id="gifts" class="py-10">
   <!-- Gift information card -->
   <div
     class="bg-[#3e4034] text-gray-100 rounded-lg p-12 text-center max-w-4xl mx-auto"
@@ -60,7 +59,7 @@ const config = WEDDING_CONFIG[locale]
           light: "#FFFFFF",
         },
       },
-      function (error) {
+      function (error: any) {
         if (error) console.error("QR Code generation error:", error)
       }
     )

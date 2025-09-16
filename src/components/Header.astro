@@ -8,7 +8,7 @@ const config = WEDDING_CONFIG[locale]
 
 <header
   id="header-nav"
-  class="w-full fixed top-0 left-0 z-50 backdrop-blur transition-all duration-600"
+  class="w-full fixed top-0 left-0 z-50 transition-all duration-600"
 >
   <div class="max-w-6xl mx-auto px-4 py-4">
     <div class="flex flex-row justify-between sm:grid grid-cols-3 items-center">
@@ -46,16 +46,18 @@ const config = WEDDING_CONFIG[locale]
 </header>
 
 <script>
+  const headerNav = document.getElementById("header-nav")!
   const headerLogo = document.getElementById("header-logo")!
   const navLinks = document.querySelectorAll(".nav-link")!
   const headerButton = document.getElementById("header-button")!
 
   function updateHeaderStyles() {
     const scrollY = window.scrollY
-    const threshold = window.innerHeight - 100 // 100dvh equivalent
+    const threshold = window.innerHeight - 100 // 100lvh equivalent
 
+    // Initial state
     if (scrollY < threshold) {
-      // Initial state: white text, transparent background
+      headerNav.classList.remove("backdrop-blur")
       navLinks.forEach((link) => {
         link.classList.remove("text-gray-800")
         link.classList.add("text-white")
@@ -73,7 +75,8 @@ const config = WEDDING_CONFIG[locale]
         "hover:bg-gray-100"
       )
     } else {
-      // Scrolled state: original colors
+      // Scrolled state
+      headerNav.classList.add("backdrop-blur")
       navLinks.forEach((link) => {
         link.classList.remove("text-white")
         link.classList.add("text-gray-800")

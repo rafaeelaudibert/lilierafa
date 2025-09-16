@@ -24,7 +24,7 @@
     </div>
 
     <!-- Mobile: Swipe down indicator -->
-    <div class="md:hidden flex flex-col items-center">
+    <div class="flex flex-col md:hidden items-center">
       <div
         class="w-8 h-8 border-2 border-white/60 rounded-full flex items-center justify-center group-hover:border-white transition-colors duration-300"
       >
@@ -48,6 +48,6 @@
 <script>
   const scrollIndicator = document.getElementById("scroll-indicator")!
   setTimeout(() => {
-    scrollIndicator.classList.remove("opacity-0")
+    scrollIndicator.classList.remove("md:opacity-0")
   }, 3000)
 </script>

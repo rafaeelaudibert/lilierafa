@@ -1,5 +1,5 @@
 ---
-import { WEDDING_CONFIG, type Locale } from "../constants/wedding.ts"
+import { WEDDING_CONFIG, type Locale } from "../constants/wedding"
 import { getLocale } from "astro-i18n-aut"
 import Hearts from "./Hearts.astro"
 
@@ -7,7 +7,7 @@ const locale = getLocale(Astro.url) as Locale
 const config = WEDDING_CONFIG[locale]
 ---
 
-<section id="faq" class="py-20">
+<section id="faq" class="py-10">
   <!-- Hearts decoration -->
   <div class="text-center mb-8">
     <Hearts />
@@ -48,7 +48,7 @@ const config = WEDDING_CONFIG[locale]
               </svg>
             </button>
             <div class="faq-answer mt-4 text-gray-600 leading-relaxed max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
-              <p>{item.answer}</p>
+              <p set:html={item.answer} />
             </div>
           </div>
         ))

@@ -1,12 +1,13 @@
 ---
-import { WEDDING_CONFIG, type Locale } from "../constants/wedding.ts"
+import { Image } from "astro:assets"
+import { WEDDING_CONFIG, type Locale } from "../constants/wedding"
 import { getLocale } from "astro-i18n-aut"
 
 const locale = getLocale(Astro.url) as Locale
 const config = WEDDING_CONFIG[locale]
 ---
 
-<section id="schedule" class="py-20">
+<section id="schedule" class="py-10">
   <!-- Section label and heading - constrained width -->
   <div class="max-w-6xl mx-auto px-4 mb-16">
     <div class="text-gray-400 text-sm uppercase tracking-wide mb-2">
@@ -34,7 +35,7 @@ const config = WEDDING_CONFIG[locale]
             return (
               <div class="flex-shrink-0 w-72 text-center relative z-10">
                 <div class="bg-white rounded-lg shadow-lg border border-gray-100 overflow-hidden h-96 flex flex-col">
-                  <img
+                  <Image
                     src={item.image}
                     alt={item.title}
                     class="w-full h-48 object-cover"
