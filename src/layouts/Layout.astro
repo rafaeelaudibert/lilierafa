@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css"
 import Posthog from "../components/posthog.astro"
+import Confetti from "../components/Confetti.astro"
 
 const TITLE = "Lili & Rafa - 25.04.2026"
 ---
@@ -40,13 +41,14 @@ const TITLE = "Lili & Rafa - 25.04.2026"
     </style>
 
     <title>{TITLE}</title>
+
+    <Posthog />
+    <Confetti />
   </head>
   <body>
     <slot />
   </body>
 </html>
-
-<Posthog />
 
 <style>
   html,

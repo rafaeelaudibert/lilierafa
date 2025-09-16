@@ -72,6 +72,10 @@ interface Config {
     }
     videoCaption: string
     submit: string
+    success: {
+      title: string
+      message: string
+    }
   }
   faq: {
     title: string
@@ -207,6 +211,10 @@ export const WEDDING_CONFIG: Record<Locale, Config> = {
           "Any information we should know, or questions you might have...",
       },
       submit: "Submit",
+      success: {
+        title: "Thank you!",
+        message: "We've received your RSVP and can't wait to celebrate with you! 🎉",
+      },
     },
     faq: {
       title: "You also might be",
@@ -360,6 +368,10 @@ export const WEDDING_CONFIG: Record<Locale, Config> = {
           "Qualquer coisa que você queira nos informar, ou perguntas que você tenha.",
       },
       submit: "Enviar",
+      success: {
+        title: "Obrigado!",
+        message: "Recebemos sua confirmação e mal podemos esperar para celebrar com você! 🎉",
+      },
     },
     faq: {
       title: "Você também pode estar",

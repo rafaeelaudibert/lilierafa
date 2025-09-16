@@ -1,0 +1,219 @@
+---
+
+---
+
+<script>
+  // This file is responsible to include all of our magic confetti stuff 🎊
+  // It handles all of our easter eggs but also exposes
+  // `window.throwConfetti` so that we can use it in other scripts too
+
+  import JSConfetti from "js-confetti"
+  const jsConfetti = new JSConfetti()
+
+  // Show a lot of confetti in screen
+  function throwConfetti() {
+    // First burst: Wedding emojis with slower movement
+    jsConfetti.addConfetti({
+      emojis: ["🎉", "💒", "💍", "❤️", "🥂"],
+      emojiSize: 80,
+      confettiNumber: 80,
+      confettiRadius: 8,
+      confettiColors: ["#A5684A", "#AE815C", "#DCC082", "#F5F1EB", "#8B7D6B"],
+    })
+
+    // Second burst: More colorful confetti
+    setTimeout(() => {
+      jsConfetti.addConfetti({
+        confettiColors: [
+          "#A5684A", // Brown
+          "#AE815C", // Light brown
+          "#DCC082", // Beige
+          "#F5F1EB", // Light beige
+          "#8B7D6B", // Dark beige
+          "#D4A574", // Gold
+          "#E8C4A0", // Light gold
+        ],
+        confettiNumber: 150,
+        confettiRadius: 6,
+      })
+    }, 1000)
+
+    // Third burst: Even more celebration
+    setTimeout(() => {
+      jsConfetti.addConfetti({
+        emojis: ["🌸", "🍾", "✨", "💐", "🎊"],
+        emojiSize: 60,
+        confettiNumber: 60,
+      })
+    }, 2000)
+  }
+
+  // Expose throwConfetti to window
+  // so that we can use it in other scripts too
+  window.throwConfetti = throwConfetti
+
+  // Cooldown mechanism to prevent spam
+  let lastConfettiTime = 0
+  const CONFETTI_COOLDOWN = 3000 // 3 seconds
+
+  function canTriggerConfetti() {
+    const now = Date.now()
+    if (now - lastConfettiTime < CONFETTI_COOLDOWN) return false
+    lastConfettiTime = now
+    return true
+  }
+
+  function triggerMagicConfetti() {
+    if (canTriggerConfetti() && window.throwConfetti) {
+      window.throwConfetti()
+    }
+  }
+
+  // Desktop: Type "love" when not in input
+  let typedSequence = ""
+  const targetWord = "love"
+
+  document.addEventListener("keydown", (e) => {
+    // Only track if not in an input, textarea, or content editable
+    const target = e.target as HTMLElement
+    if (
+      target.tagName === "INPUT" ||
+      target.tagName === "TEXTAREA" ||
+      target.isContentEditable
+    ) {
+      return
+    }
+
+    // Add the typed character to sequence
+    if (e.key.length === 1) {
+      typedSequence += e.key.toLowerCase()
+
+      // Keep only the last 4 characters (length of "love")
+      if (typedSequence.length > targetWord.length) {
+        typedSequence = typedSequence.slice(-targetWord.length)
+      }
+
+      // Check if we typed "love"
+      if (typedSequence === targetWord) {
+        triggerMagicConfetti()
+        typedSequence = "" // Reset
+      }
+    }
+  })
+
+  // Mobile: Shake gesture detection
+  let isShakeEnabled = false
+  let lastShakeTime = 0
+  let acceleration = { x: 0, y: 0, z: 0 }
+  let lastAcceleration = { x: 0, y: 0, z: 0 }
+
+  // Check if device supports motion
+  if (typeof DeviceMotionEvent !== "undefined") {
+    // Request permission on iOS 13+
+    if (typeof (DeviceMotionEvent as any).requestPermission === "function") {
+      // iOS 13+ requires permission request, but we'll enable on first user interaction
+      document.addEventListener(
+        "touchstart",
+        async () => {
+          if (!isShakeEnabled) {
+            try {
+              const permission = await (
+                DeviceMotionEvent as any
+              ).requestPermission()
+              if (permission === "granted") {
+                isShakeEnabled = true
+                enableShakeDetection()
+              }
+            } catch (error) {
+              // Permission denied or error, but we can still try
+              console.log("Motion permission not granted")
+            }
+          }
+        },
+        { once: true }
+      )
+    } else {
+      // Non-iOS or older iOS, enable immediately
+      isShakeEnabled = true
+      enableShakeDetection()
+    }
+  }
+
+  function enableShakeDetection() {
+    window.addEventListener("devicemotion", (e) => {
+      if (!isShakeEnabled) return
+
+      const current = e.accelerationIncludingGravity
+      if (!current) return
+
+      acceleration.x = current.x || 0
+      acceleration.y = current.y || 0
+      acceleration.z = current.z || 0
+
+      // Calculate the change in acceleration
+      const deltaX = Math.abs(acceleration.x - lastAcceleration.x)
+      const deltaY = Math.abs(acceleration.y - lastAcceleration.y)
+      const deltaZ = Math.abs(acceleration.z - lastAcceleration.z)
+
+      // Shake threshold
+      const shakeThreshold = 15
+      const now = Date.now()
+
+      if (
+        (deltaX > shakeThreshold ||
+          deltaY > shakeThreshold ||
+          deltaZ > shakeThreshold) &&
+        now - lastShakeTime > 1000
+      ) {
+        lastShakeTime = now
+        triggerMagicConfetti()
+      }
+
+      lastAcceleration.x = acceleration.x
+      lastAcceleration.y = acceleration.y
+      lastAcceleration.z = acceleration.z
+    })
+  }
+
+  // Konami code easter egg (↑↑↓↓←→←→BA)
+  let konamiSequence: string[] = []
+  const konamiCode = [
+    "ArrowUp",
+    "ArrowUp",
+    "ArrowDown",
+    "ArrowDown",
+    "ArrowLeft",
+    "ArrowRight",
+    "ArrowLeft",
+    "ArrowRight",
+    "KeyB",
+    "KeyA",
+  ]
+
+  document.addEventListener("keydown", (e) => {
+    const target = e.target as HTMLElement
+    if (
+      target.tagName === "INPUT" ||
+      target.tagName === "TEXTAREA" ||
+      target.isContentEditable
+    ) {
+      return
+    }
+
+    konamiSequence.push(e.code)
+
+    // Keep only the last 10 keys
+    if (konamiSequence.length > konamiCode.length) {
+      konamiSequence = konamiSequence.slice(-konamiCode.length)
+    }
+
+    // Check if sequence matches
+    if (
+      konamiSequence.length === konamiCode.length &&
+      konamiSequence.every((key, index) => key === konamiCode[index])
+    ) {
+      triggerMagicConfetti()
+      konamiSequence = []
+    }
+  })
+</script>
