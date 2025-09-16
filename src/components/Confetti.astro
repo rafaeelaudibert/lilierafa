@@ -12,7 +12,7 @@
 
   // Show a lot of confetti in screen
   function throwConfetti() {
-    // First burst: Wedding emojis with slower movement
+    // First burst: Wedding emojis with slower movement + small vibration
     jsConfetti.addConfetti({
       emojis: ["🎉", "💒", "💍", "❤️", "🥂"],
       emojiSize: 80,
@@ -20,8 +20,9 @@
       confettiRadius: 8,
       confettiColors: ["#A5684A", "#AE815C", "#DCC082", "#F5F1EB", "#8B7D6B"],
     })
+    navigator.vibrate?.([120, 80, 120])
 
-    // Second burst: More colorful confetti
+    // Second burst: More colorful confetti + small vibration
     setTimeout(() => {
       jsConfetti.addConfetti({
         confettiColors: [
@@ -36,21 +37,19 @@
         confettiNumber: 150,
         confettiRadius: 6,
       })
+      navigator.vibrate?.([150, 60, 150, 60, 150])
     }, 1000)
 
-    // Third burst: Even more celebration
+    // Third burst: Even more celebration + longer vibration
     setTimeout(() => {
       jsConfetti.addConfetti({
         emojis: ["🌸", "🍾", "✨", "💐", "🎊"],
         emojiSize: 60,
         confettiNumber: 60,
       })
+      navigator.vibrate?.([200, 100, 100, 50, 100])
     }, 2000)
   }
-
-  // Expose throwConfetti to window
-  // so that we can use it in other scripts too
-  window.throwConfetti = throwConfetti
 
   // Cooldown mechanism to prevent spam
   let lastConfettiTime = 0
@@ -64,14 +63,18 @@
   }
 
   function triggerMagicConfetti() {
-    if (canTriggerConfetti() && window.throwConfetti) {
-      window.throwConfetti()
+    if (canTriggerConfetti()) {
+      throwConfetti()
     }
   }
 
+  // Expose triggerMagicConfetti to window
+  // so that we can use it in other scripts too
+  window.throwConfetti = triggerMagicConfetti
+
   // Desktop: Type "love" when not in input
   let typedSequence = ""
-  const targetWord = "love"
+  const TARGET_WORD = "love"
 
   document.addEventListener("keydown", (e) => {
     // Only track if not in an input, textarea, or content editable
@@ -89,12 +92,12 @@
       typedSequence += e.key.toLowerCase()
 
       // Keep only the last 4 characters (length of "love")
-      if (typedSequence.length > targetWord.length) {
-        typedSequence = typedSequence.slice(-targetWord.length)
+      if (typedSequence.length > TARGET_WORD.length) {
+        typedSequence = typedSequence.slice(-TARGET_WORD.length)
       }
 
       // Check if we typed "love"
-      if (typedSequence === targetWord) {
+      if (typedSequence === TARGET_WORD) {
         triggerMagicConfetti()
         typedSequence = "" // Reset
       }
@@ -212,8 +215,8 @@
       konamiSequence.length === konamiCode.length &&
       konamiSequence.every((key, index) => key === konamiCode[index])
     ) {
-      triggerMagicConfetti()
       konamiSequence = []
+      triggerMagicConfetti()
     }
   })
 </script>
