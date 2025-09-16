@@ -1,4 +1,4 @@
-import { ImageMetadata } from "astro"
+import { type ImageMetadata } from "astro"
 
 import ceremonyImage from "../assets/ceremony.png"
 import aperitifImage from "../assets/aperitif.png"
