@@ -6,14 +6,14 @@ const locale = getLocale(Astro.url) as Locale
 const config = WEDDING_CONFIG[locale]
 ---
 
-<footer class="bg-gray-800 text-white pt-16 pb-8">
+<footer class="bg-[var(--theme3)] text-white pt-16 pb-8">
   <div class="max-w-6xl mx-auto px-4">
     <div class="grid md:grid-cols-2 gap-12 items-center">
       <!-- Left side - Navigation and info -->
       <div>
         <div class="mb-8">
           <h3 class="text-2xl font-bold mb-4">{config.couple.them}</h3>
-          <p class="text-gray-300 mb-6">
+          <p class="text-white mb-6">
             {config.wedding.date} • {config.wedding.time}
           </p>
         </div>
@@ -24,7 +24,7 @@ const config = WEDDING_CONFIG[locale]
             config.navigation.map((link) => (
               <a
                 href={link.href}
-                class="text-gray-300 hover:text-white transition-colors duration-200"
+                class="text-white hover:text-white transition-colors duration-200"
               >
                 {link.label}
               </a>
@@ -33,7 +33,7 @@ const config = WEDDING_CONFIG[locale]
         </div>
 
         <!-- Contact info -->
-        <div class="flex flex-col gap-1 text-sm text-gray-400">
+        <div class="flex flex-col gap-1 text-sm text-[var(--theme0)]">
           <a
             href={`mailto:${config.contact.email}`}
             class="hover:text-white transition-colors duration-200"
@@ -55,35 +55,35 @@ const config = WEDDING_CONFIG[locale]
           {config.footer.countdown.label}
         </h4>
         <div id="countdown" class="flex flex-row gap-4">
-          <div class="bg-gray-700 rounded-lg p-4">
-            <div id="days" class="text-2xl font-bold text-[var(--brown)]">
+          <div class="bg-[var(--theme2)] rounded-lg p-4">
+            <div id="days" class="text-2xl font-bold text-[var(--theme0)]">
               --
             </div>
-            <div class="text-xs text-gray-300 mt-1">
+            <div class="text-xs text-white mt-1">
               {config.footer.countdown.days}
             </div>
           </div>
-          <div class="bg-gray-700 rounded-lg p-4">
-            <div id="hours" class="text-2xl font-bold text-[var(--brown)]">
+          <div class="bg-[var(--theme2)] rounded-lg p-4">
+            <div id="hours" class="text-2xl font-bold text-[var(--theme0)]">
               --
             </div>
-            <div class="text-xs text-gray-300 mt-1">
+            <div class="text-xs text-white mt-1">
               {config.footer.countdown.hours}
             </div>
           </div>
-          <div class="bg-gray-700 rounded-lg p-4">
-            <div id="minutes" class="text-2xl font-bold text-[var(--brown)]">
+          <div class="bg-[var(--theme2)] rounded-lg p-4">
+            <div id="minutes" class="text-2xl font-bold text-[var(--theme0)]">
               --
             </div>
-            <div class="text-xs text-gray-300 mt-1">
+            <div class="text-xs text-white mt-1">
               {config.footer.countdown.minutes}
             </div>
           </div>
-          <div class="bg-gray-700 rounded-lg p-4">
-            <div id="seconds" class="text-2xl font-bold text-[var(--brown)]">
+          <div class="bg-[var(--theme2)] rounded-lg p-4">
+            <div id="seconds" class="text-2xl font-bold text-[var(--theme0)]">
               --
             </div>
-            <div class="text-xs text-gray-300 mt-1">
+            <div class="text-xs text-white mt-1">
               {config.footer.countdown.seconds}
             </div>
           </div>
@@ -92,7 +92,7 @@ const config = WEDDING_CONFIG[locale]
     </div>
 
     <div
-      class="border-t border-gray-700 mt-12 pt-8 text-center text-sm text-gray-400"
+      class="border-t border-[var(--theme1)] mt-12 pt-8 text-center text-sm text-[var(--theme3)]"
     >
       <p>{config.footer.content}</p>
     </div>

@@ -3,7 +3,7 @@ import heartSvg from '../assets/heart.svg?raw';
 ---
 
 <div
-  class="text-gray-400 flex justify-center items-center gap-2"
+  class="text-[var(--theme1)] flex justify-center items-center gap-2"
   aria-hidden="true"
 >
   <span class="text-2xl animate-pump" style="animation-delay: 0.1s;" set:html={heartSvg.replace('<svg', '<svg width="1em" height="1em"')}></span>

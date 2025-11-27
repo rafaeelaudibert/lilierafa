@@ -15,9 +15,9 @@ const config = WEDDING_CONFIG[locale]
 
   <!-- Section heading -->
   <div class="text-center mb-16">
-    <h2 class="text-4xl md:text-5xl font-bold text-gray-800 leading-tight">
+    <h2 class="text-4xl md:text-5xl font-bold text-[var(--theme3)] leading-tight">
       {config.faq.title}<br />
-      <span class="text-[var(--brown)]">{config.faq.detail}</span>
+      <span class="text-[var(--theme1)]">{config.faq.detail}</span>
     </h2>
   </div>
 
@@ -31,9 +31,9 @@ const config = WEDDING_CONFIG[locale]
               class="faq-question w-full flex justify-between items-center text-left group cursor-pointer"
               data-faq-toggle
             >
-              <span class="text-gray-800 font-medium">{item.question}</span>
+              <span class="text-[var(--theme3)] font-medium">{item.question}</span>
               <svg
-                class="faq-icon w-6 h-6 text-gray-600 transition-all duration-300 ease-in-out group-hover:text-[var(--brown)]"
+                class="faq-icon w-6 h-6 text-[var(--theme3)] transition-all duration-300 ease-in-out group-hover:text-[var(--theme1)]"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -47,7 +47,7 @@ const config = WEDDING_CONFIG[locale]
                 />
               </svg>
             </button>
-            <div class="faq-answer mt-4 text-gray-600 leading-relaxed max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+            <div class="faq-answer mt-4 text-[var(--theme3)] leading-relaxed max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
               <p set:html={item.answer} />
             </div>
           </div>

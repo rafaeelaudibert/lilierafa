@@ -28,7 +28,7 @@ const config = WEDDING_CONFIG[locale]
         <a
           id="header-logo"
           href="#hero-reference"
-          class="font-semibold text-white sm:text-gray-800 transition-all sm:opacity-0 duration-600"
+          class="font-semibold text-white sm:text-[var(--theme3)] transition-all sm:opacity-0 duration-600"
           >{config.couple.them}</a
         >
       </div>
@@ -59,15 +59,15 @@ const config = WEDDING_CONFIG[locale]
     if (scrollY < threshold) {
       headerNav.classList.remove("backdrop-blur")
       navLinks.forEach((link) => {
-        link.classList.remove("text-gray-800")
+        link.classList.remove("text-[var(--theme3)]")
         link.classList.add("text-white")
       })
       headerLogo.classList.add("text-white", "sm:opacity-0")
-      headerLogo.classList.remove("text-gray-800", "sm:opacity-100")
+      headerLogo.classList.remove("text-[var(--theme3)]", "sm:opacity-100")
       headerButton.classList.remove(
-        "bg-gray-800",
+        "bg-[var(--theme1)]",
         "text-white",
-        "hover:bg-gray-700"
+        "hover:bg-[var(--theme2)]"
       )
       headerButton.classList.add(
         "bg-white",
@@ -79,19 +79,19 @@ const config = WEDDING_CONFIG[locale]
       headerNav.classList.add("backdrop-blur")
       navLinks.forEach((link) => {
         link.classList.remove("text-white")
-        link.classList.add("text-gray-800")
+        link.classList.add("text-[var(--theme3)]")
       })
       headerLogo.classList.remove("text-white", "sm:opacity-0")
-      headerLogo.classList.add("text-gray-800", "sm:opacity-100")
+      headerLogo.classList.add("text-[var(--theme3)]", "sm:opacity-100")
       headerButton.classList.remove(
         "bg-white",
         "text-slate-600",
         "hover:bg-gray-100"
       )
       headerButton.classList.add(
-        "bg-gray-800",
+        "bg-[var(--theme1)]",
         "text-white",
-        "hover:bg-gray-700"
+        "hover:bg-[var(--theme2)]"
       )
     }
   }

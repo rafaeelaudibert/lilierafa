@@ -4,9 +4,10 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: 100px; /* Account for fixed header height */
 
-  --gold: #d4c4a8;
-  --beige: #f5f1eb;
-  --brown: #8b7355;
+  --theme0: #fefaf8;
+  --theme1: #cfb59e;
+  --theme2: #6c4d38;
+  --theme3: #402d21;
 }
 
 /* Custom scrollbar styling */
@@ -16,11 +17,11 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--beige);
+  background: var(--theme0);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--gold);
+  background: var(--theme1);
   border-radius: 4px;
 }
 
@@ -31,5 +32,5 @@ html {
 /* Firefox scrollbar styling */
 * {
   scrollbar-width: thin;
-  scrollbar-color: var(--gold) var(--beige);
+  scrollbar-color: var(--theme1) var(--theme0);
 }

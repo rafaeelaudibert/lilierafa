@@ -9,7 +9,7 @@ const config = WEDDING_CONFIG[locale]
 <section id="gifts" class="py-10">
   <!-- Gift information card -->
   <div
-    class="bg-[#3e4034] text-gray-100 rounded-lg p-12 text-center max-w-4xl mx-auto"
+    class="bg-[var(--theme3)] text-[var(--theme0)] rounded-lg p-12 text-center max-w-4xl mx-auto"
   >
     <div class="text-sm uppercase tracking-wide mb-4">{config.gifts.title}</div>
 
@@ -27,6 +27,7 @@ const config = WEDDING_CONFIG[locale]
         href="https://nubank.com.br/cobrar/26alg/68c75457-71d3-4731-b3db-27981650a675"
         target="_blank"
         rel="noopener noreferrer"
+        aria-label="Pix QR code for Rafael Baldasso Audibert"
       >
         <canvas id="pix-qr-code" class="mx-auto bg-white p-2 rounded-lg"
         ></canvas>
@@ -42,7 +43,6 @@ const config = WEDDING_CONFIG[locale]
 <script>
   import QRCode from "qrcode"
 
-  // Generate QR code with PIX data
   const pixData =
     "00020126710014BR.GOV.BCB.PIX0136a89509a5-da6e-4bf3-b83d-26f16563a6d90209Honeymoon5204000053039865802BR5924Rafael Baldasso Audibert6009SAO PAULO62140510Lkc8I56Cra63046E51"
   const canvas = document.getElementById("pix-qr-code")
@@ -59,7 +59,7 @@ const config = WEDDING_CONFIG[locale]
           light: "#FFFFFF",
         },
       },
-      function (error: any) {
+      function (error) {
         if (error) console.error("QR Code generation error:", error)
       }
     )

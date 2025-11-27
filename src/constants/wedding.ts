@@ -213,7 +213,8 @@ export const WEDDING_CONFIG: Record<Locale, Config> = {
       submit: "Submit",
       success: {
         title: "Thank you!",
-        message: "We've received your RSVP and can't wait to celebrate with you! 🎉",
+        message:
+          "We've received your RSVP and can't wait to celebrate with you! 🎉",
       },
     },
     faq: {
@@ -310,7 +311,7 @@ export const WEDDING_CONFIG: Record<Locale, Config> = {
     },
     schedule: {
       header: "Agenda",
-      title: "O dia de nosso",
+      title: "O dia do nosso",
       detail: "casamento",
       description:
         "O casamento ocorrerá durante todo o dia na Vila Fitarelli. Não podemos esperar para compartilhar este dia especial com você!",
@@ -370,7 +371,8 @@ export const WEDDING_CONFIG: Record<Locale, Config> = {
       submit: "Enviar",
       success: {
         title: "Obrigado!",
-        message: "Recebemos sua confirmação e mal podemos esperar para celebrar com você! 🎉",
+        message:
+          "Recebemos sua confirmação e mal podemos esperar para celebrar com você! 🎉",
       },
     },
     faq: {
