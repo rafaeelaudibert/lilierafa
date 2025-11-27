@@ -1,6 +1,7 @@
 ---
 import { WEDDING_CONFIG, type Locale } from "../constants/wedding"
 import { getLocale } from "astro-i18n-aut"
+import monograma from "../assets/monograma.png"
 
 const locale = getLocale(Astro.url) as Locale
 const config = WEDDING_CONFIG[locale]
@@ -94,7 +95,14 @@ const config = WEDDING_CONFIG[locale]
     <div
       class="border-t border-[var(--theme1)] mt-12 pt-8 text-center text-sm text-[var(--theme3)]"
     >
-      <p>{config.footer.content}</p>
+      <div class="flex flex-col items-center gap-4">
+        <img 
+          src={monograma.src} 
+          alt={config.couple.them}
+          class="h-12 w-auto opacity-60"
+        />
+        <p>{config.footer.content}</p>
+      </div>
     </div>
   </div>
 </footer>
