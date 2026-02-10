@@ -4,10 +4,10 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: 100px; /* Account for fixed header height */
 
-  --theme0: #fefaf8;
-  --theme1: #cfb59e;
-  --theme2: #6c4d38;
-  --theme3: #402d21;
+  --theme0: #fdf5f7;
+  --theme1: #d4a0b0;
+  --theme2: #8b4060;
+  --theme3: #4e1a35;
 }
 
 /* Custom scrollbar styling */
@@ -26,7 +26,7 @@ html {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #c4b498;
+  background: #c4899e;
 }
 
 /* Firefox scrollbar styling */
