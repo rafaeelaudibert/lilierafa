@@ -25,3 +25,6 @@ pnpm-debug.log*
 
 # i18n stuff
 astro_tmp_pages_*
+
+# Ignore .env file
+.env
