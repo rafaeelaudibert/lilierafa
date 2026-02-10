@@ -12,9 +12,9 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/sitemap": "3.6.0",
+    "@astrojs/sitemap": "3.7.0",
     "@tailwindcss/vite": "^4.1.13",
-    "astro": "5.16.1",
+    "astro": "5.17.1",
     "astro-i18n-aut": "^0.7.3",
     "js-confetti": "^0.13.1",
     "qrcode": "^1.5.4",
