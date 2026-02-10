@@ -103,7 +103,7 @@ export const WEDDING_CONFIG: Record<Locale, Config> = {
   en: {
     callout: "We're getting married!",
     longCallout:
-      "We're getting married! And we're so excited to celebrate our day with you. On this page, you'll find everything you need to know – schedule, location, dress code, accommodation – and you can RSVP directly here. See you in lovely Vale dos Vinhedos!",
+      "We're getting married! And we're so excited to celebrate our day with you. On this page, you'll find everything you need to know – schedule, location, dress code – and you can RSVP directly here. See you in lovely Vale dos Vinhedos!",
     cta: "I'm coming!",
     couple: {
       her: "Lili",
@@ -155,7 +155,7 @@ export const WEDDING_CONFIG: Record<Locale, Config> = {
       title: "The day of our",
       detail: "celebration",
       description:
-        "The celebration will take place throughout the day at Vila Fitarelli. We can't wait to share this special day with you!",
+        "The ceremony and celebration will all take place at Vila Fitarelli. We can't wait to share this special day with you!",
       agenda: [
         {
           time: "4pm",
@@ -168,7 +168,7 @@ export const WEDDING_CONFIG: Record<Locale, Config> = {
           time: "5:30pm",
           title: "Aperitifs",
           description:
-            "Cocktails and (gluten-free) canapés while we take photos on the sunset",
+            "Cocktails and (gluten-free) canapés while we take photos at sunset",
           image: aperitifImage,
         },
         {
@@ -314,7 +314,7 @@ export const WEDDING_CONFIG: Record<Locale, Config> = {
       title: "O dia do nosso",
       detail: "casamento",
       description:
-        "O casamento ocorrerá durante todo o dia na Vila Fitarelli. Não podemos esperar para compartilhar este dia especial com você!",
+        "A cerimônia e a festa acontecerão no mesmo local, na Vila Fitarelli. Mal podemos esperar para compartilhar este dia especial com você!",
       agenda: [
         {
           time: "16:00",
@@ -346,7 +346,7 @@ export const WEDDING_CONFIG: Record<Locale, Config> = {
       ],
     },
     gifts: {
-      title: "PRESENTES ",
+      title: "PRESENTES",
       presence: "Sua presença é o suficiente",
       content:
         "De verdade! Nós estamos verdadeiramente felizes de apenas celebrar nosso dia com você. Se você ainda assim quiser nos presentear com algo, adoraríamos se pudesse contribuir para a nossa viagem de lua de mel através do código PIX abaixo.",
@@ -387,7 +387,7 @@ export const WEDDING_CONFIG: Record<Locale, Config> = {
         {
           question: "O que devo vestir?",
           answer:
-            "Padrinhos e madinhas receberam um código de vestimenta em seus convites. Aos demais convidados, pedimos que compareçam com traje social ou esporte fino. <br/><br/> Gentilmente solicitamos às convidadas que não utilizem a cor branca, reservada exclusivamente à noiva. Informamos, com todo carinho e respeito, que não será permitida a entrada de convidadas vestindo branco. Contamos com a compreensão de todas.",
+            "Padrinhos e madrinhas receberam um código de vestimenta em seus convites. Aos demais convidados, pedimos que compareçam com traje social ou esporte fino. <br/><br/> Gentilmente solicitamos às convidadas que não utilizem a cor branca, reservada exclusivamente à noiva. Informamos, com todo carinho e respeito, que não será permitida a entrada de convidadas vestindo branco. Contamos com a compreensão de todas.",
         },
         {
           question: "Há comida sem glúten? E sem lactose?",
