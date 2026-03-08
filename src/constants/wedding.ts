@@ -29,6 +29,9 @@ interface Config {
     href: string
     label: string
   }[]
+  hero: {
+    alt: string
+  }
   venue: {
     header: string
     title: string
@@ -126,6 +129,9 @@ export const WEDDING_CONFIG: Record<Locale, Config> = {
       { href: "#schedule", label: "Schedule" },
       { href: "#faq", label: "FAQ" },
     ],
+    hero: {
+      alt: "Rafael and Liliane posing with fancy attire in a partially sunlit garden. Rafael is on the left with a white shirt, black pants, and black shoes, with his black suit jacket thrown over his shoulder. Lili is on the right looking straight at the camera in a beautiful long white dress, resting one hand on Rafael's shoulder while the other is wrapped around his arm.",
+    },
     venue: {
       header: "Location",
       title: "We'll see you at",
@@ -285,6 +291,9 @@ export const WEDDING_CONFIG: Record<Locale, Config> = {
       { href: "#schedule", label: "Agenda" },
       { href: "#faq", label: "FAQ" },
     ],
+    hero: {
+      alt: "Rafael e Liliane posando com trajes elegantes em um jardim parcialmente iluminado pelo sol. Rafael está à esquerda, vestindo camisa branca, calça preta e sapatos pretos, com seu terno preto jogado sobre o ombro. Lili está à direita, olhando diretamente para a câmera em um belo vestido longo branco, apoiando uma mão no ombro de Rafael enquanto a outra envolve seu braço.",
+    },
     venue: {
       header: "O lugar",
       title: "Nos vemos na",
