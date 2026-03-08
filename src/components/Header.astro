@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets"
 import { WEDDING_CONFIG, type Locale } from "../constants/wedding"
 import { getLocale } from "astro-i18n-aut"
 import monograma from "../assets/monograma.png"
@@ -31,10 +32,11 @@ const config = WEDDING_CONFIG[locale]
           href="#hero-reference"
           class="transition-all sm:opacity-0 duration-600 flex items-center"
         >
-          <img 
-            src={monograma.src} 
+          <Image 
+            src={monograma} 
             alt={config.couple.them}
             class="h-8 w-auto filter brightness-0 invert sm:brightness-100 sm:invert-0"
+            loading="eager"
           />
         </a>
       </div>
