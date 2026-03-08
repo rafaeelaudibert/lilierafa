@@ -11,7 +11,7 @@ const config = WEDDING_CONFIG[locale]
 
 <section
   id="hero"
-  class="h-svh w-full fixed top-0 left-0 z-0"
+  class="h-lvh w-full fixed top-0 left-0 z-0"
   style={`background-image: url('${heroImage.src}'); background-size: cover; background-position: center; background-repeat: no-repeat;`}
 >
   <!-- Background overlay for better text readability -->
@@ -40,7 +40,9 @@ const config = WEDDING_CONFIG[locale]
     </div>
 
     <div class="lg:hidden px-2">
-      <h1 class="text-[4rem] md:text-[8rem] mb-4 font-bold text-white leading-none">
+      <h1
+        class="text-[4rem] md:text-[8rem] mb-4 font-bold text-white leading-none"
+      >
         {config.couple.her}
         <span class="text-[var(--theme0)]">&</span>
         {config.couple.him}

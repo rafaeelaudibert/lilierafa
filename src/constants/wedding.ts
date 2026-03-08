@@ -118,7 +118,7 @@ export const WEDDING_CONFIG: Record<Locale, Config> = {
       fullDate: new Date("2026-04-25T16:00:00-03:00"), // 4 PM Brazilian time
     },
     contact: {
-      email: "rafael.liliane.casa@gmail.com",
+      email: "rafaeelaudibert@gmail.com",
       phone: "+55 54 99645 5959",
     },
     navigation: [
@@ -130,13 +130,13 @@ export const WEDDING_CONFIG: Record<Locale, Config> = {
       header: "Location",
       title: "We'll see you at",
       button: "Find on Google Maps",
-      name: "Vila Fitarelli",
+      name: "Villa Fitarelli",
       url: "https://maps.app.goo.gl/Ff65hxMaZGSHgZXSA",
       cards: [
         {
           label: "The venue",
           description:
-            "Vila Fitarelli is a historic Italian manor house in Garibaldi, in the amazing Vale dos Vinhedos, Brazil.",
+            "Villa Fitarelli is a historic Italian manor house in Garibaldi, in the amazing Vale dos Vinhedos, Brazil.",
         },
         {
           label: "How to get there",
@@ -155,7 +155,7 @@ export const WEDDING_CONFIG: Record<Locale, Config> = {
       title: "The day of our",
       detail: "celebration",
       description:
-        "The ceremony and celebration will all take place at Vila Fitarelli. We can't wait to share this special day with you!",
+        "The ceremony and celebration will all take place at Villa Fitarelli. We can't wait to share this special day with you!",
       agenda: [
         {
           time: "4pm",
@@ -277,7 +277,7 @@ export const WEDDING_CONFIG: Record<Locale, Config> = {
       fullDate: new Date("2026-04-25T16:00:00-03:00"), // 4 PM Brazilian time
     },
     contact: {
-      email: "rafael.liliane.casa@gmail.com",
+      email: "rafaeelaudibert@gmail.com",
       phone: "+55 54 99645 5959",
     },
     navigation: [
@@ -289,13 +289,13 @@ export const WEDDING_CONFIG: Record<Locale, Config> = {
       header: "O lugar",
       title: "Nos vemos na",
       button: "Encontrar no Google Maps",
-      name: "Vila Fitarelli",
+      name: "Villa Fitarelli",
       url: "https://maps.app.goo.gl/Ff65hxMaZGSHgZXSA",
       cards: [
         {
           label: "O lugar",
           description:
-            "Vila Fitarelli é uma mansão italiana histórica em Garibaldi, no incrível Vale dos Vinhedos.",
+            "Villa Fitarelli é uma mansão italiana histórica em Garibaldi, no incrível Vale dos Vinhedos.",
         },
         {
           label: "Como chegar",
@@ -314,13 +314,13 @@ export const WEDDING_CONFIG: Record<Locale, Config> = {
       title: "O dia do nosso",
       detail: "casamento",
       description:
-        "A cerimônia e a festa acontecerão no mesmo local, na Vila Fitarelli. Mal podemos esperar para compartilhar este dia especial com você!",
+        "A cerimônia e a festa acontecerão no mesmo local, na Villa Fitarelli. Mal podemos esperar para compartilhar este dia especial com você!",
       agenda: [
         {
           time: "16:00",
           title: "Cerimônia",
           description:
-            'Junte-se a nós para dizer "Aceito" no lindo jardim da Vila Fitarelli',
+            'Junte-se a nós para dizer "Aceito" no lindo jardim da Villa Fitarelli',
           image: ceremonyImage,
         },
         {
@@ -361,7 +361,7 @@ export const WEDDING_CONFIG: Record<Locale, Config> = {
       videoCaption: "Venha aproveitar o agradável clima de outono conosco!",
       name: {
         label: "Nomes",
-        placeholder: "Nomes dos convidados, como está no convite",
+        placeholder: "Nomes dos convidados, como no convite",
       },
       extra: {
         label: "Informações adicionais & perguntas",
