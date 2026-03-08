@@ -1,0 +1,26 @@
+.hero-bg {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .hero-bg {
+    background-position: center;
+  }
+}
+
+/* Tablet + Desktop */
+@media (min-width: 768px) and (max-width: 2047px) {
+  .hero-bg {
+    background-position: center 40%;
+  }
+}
+
+/* Widescreen */
+@media (min-width: 2048px) {
+  .hero-bg {
+    background-position: center 35%;
+  }
+}

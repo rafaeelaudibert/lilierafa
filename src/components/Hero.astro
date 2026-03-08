@@ -4,6 +4,7 @@ import { getLocale } from "astro-i18n-aut"
 import ScrollIndicator from "./ScrollIndicator.astro"
 
 import heroImage from "../assets/hero.jpg"
+import "./hero.css"
 
 const locale = getLocale(Astro.url) as Locale
 const config = WEDDING_CONFIG[locale]
@@ -11,8 +12,8 @@ const config = WEDDING_CONFIG[locale]
 
 <section
   id="hero"
-  class="h-svh w-full fixed top-0 left-0 z-0"
-  style={`background-image: url('${heroImage.src}'); background-size: cover; background-position: center; background-repeat: no-repeat;`}
+  class="hero-bg h-svh w-full fixed top-0 left-0 z-0"
+  style={`background-image: url('${heroImage.src}');`}
 >
   <!-- Background overlay for better text readability -->
   <div class="absolute inset-0 bg-black/40"></div>
