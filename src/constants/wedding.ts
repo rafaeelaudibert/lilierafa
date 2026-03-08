@@ -1,6 +1,6 @@
 import { type ImageMetadata } from "astro"
 
-import ceremonyImage from "../assets/ceremony.png"
+import ceremonyImage from "../assets/ceremony.jpg"
 import aperitifImage from "../assets/aperitif.png"
 import dinnerImage from "../assets/dinner.png"
 import partyImage from "../assets/party.png"
@@ -349,7 +349,7 @@ export const WEDDING_CONFIG: Record<Locale, Config> = {
       title: "PRESENTES",
       presence: "Sua presença é o suficiente",
       content:
-        "De verdade! Nós estamos verdadeiramente felizes de apenas celebrar nosso dia com você. Se você ainda assim quiser nos presentear com algo, adoraríamos se pudesse contribuir para a nossa viagem de lua de mel através do código PIX abaixo.",
+        "De verdade! Nós ficaremos muito felizes apenas em celebrar nosso dia com você. Se você ainda assim quiser nos presentear com algo, adoraríamos se pudesse contribuir para a nossa viagem de lua de mel através do código PIX abaixo.",
       caption:
         "Envie o quanto você quiser - ou nada - de verdade. Já estaremos agradecidos apenas de você estar celebrando conosco.",
     },
