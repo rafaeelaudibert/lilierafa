@@ -2,12 +2,11 @@
 import EmailIcon from "../assets/email.svg"
 import PhoneIcon from "../assets/phone.svg"
 
-import videoPortrait from "../assets/driving.mp4"
-import videoLandscape from "../assets/driving-landscape.mp4"
-import videoPoster from "../assets/driving.png"
+import tennisImage from "../assets/tennis.jpg"
 
 import { WEDDING_CONFIG, type Locale } from "../constants/wedding"
 import { getLocale } from "astro-i18n-aut"
+import { Image } from "astro:assets"
 
 const locale = getLocale(Astro.url) as Locale
 const config = WEDDING_CONFIG[locale]
@@ -30,7 +29,9 @@ const config = WEDDING_CONFIG[locale]
         >
           RSVP
         </div>
-        <h2 class="text-4xl md:text-5xl font-bold text-[var(--theme3)] leading-tight">
+        <h2
+          class="text-4xl md:text-5xl font-bold text-[var(--theme3)] leading-tight"
+        >
           {config.rsvp.title}<br />
           <span class="text-[var(--theme1)]">{config.rsvp.detail}</span>
         </h2>
@@ -112,7 +113,9 @@ const config = WEDDING_CONFIG[locale]
 
       <!-- Success State (hidden by default) -->
       <div id="success-state" class="hidden">
-        <div class="bg-[var(--theme3)] text-gray-100 rounded-lg p-12 text-center">
+        <div
+          class="bg-[var(--theme3)] text-gray-100 rounded-lg p-12 text-center"
+        >
           <h3 class="text-3xl md:text-4xl font-bold mb-6 leading-tight">
             {config.rsvp.success.title}
           </h3>
@@ -128,53 +131,23 @@ const config = WEDDING_CONFIG[locale]
       <div
         class="h-full min-h-[350px] lg:min-h-full flex flex-col items-end justify-center"
       >
-        <video
-          id="responsive-video"
-          class="w-full h-full max-h-[400px] lg:max-h-full object-cover"
-          poster={videoPoster.src}
-          autoplay
-          loop
-          muted
-          playsinline></video>
+        <Image
+          src={tennisImage}
+          alt="Tennis"
+          class="w-full h-full object-cover"
+        />
+
         <span class="text-gray-400 text-sm text-right pt-4">
-          {config.rsvp.videoCaption}
+          {config.rsvp.caption}
         </span>
       </div>
     </div>
   </div>
 </section>
 
-<script define:vars={{ videoPortrait, videoLandscape }}>
-  function loadResponsiveVideo() {
-    const video = document.getElementById("responsive-video")
-    if (!video) return
-
-    const isLargeScreen = window.matchMedia("(min-width: 1024px)").matches
-    const videoSrc = isLargeScreen ? videoPortrait : videoLandscape
-
-    // Only load if src is different or not set
-    if (video.src !== videoSrc) {
-      video.src = videoSrc
-      video.load() // Force reload with new source
-    }
-  }
-
-  // Load appropriate video on page load
-  document.addEventListener("DOMContentLoaded", loadResponsiveVideo)
-
-  // Listen for screen size changes and reload appropriate video
-  window
-    .matchMedia("(min-width: 1024px)")
-    .addEventListener("change", loadResponsiveVideo)
-</script>
-
 <script>
   // This script is used to intercept the form and send the data to PostHog
   // as data for a survey
-
-  // Import confetti
-  import JSConfetti from "js-confetti"
-
   let survey: any | null = null
   window.posthog.getSurveys((surveys: any[]) => {
     survey = surveys.find((survey) => survey.name === "Wedding RSVP")
@@ -226,10 +199,10 @@ const config = WEDDING_CONFIG[locale]
 
       const { id: surveyId, questions } = survey
       const nameQuestion = questions.find(
-        (question: any) => question.question === "Name"
+        (question: any) => question.question === "Name",
       )
       const textQuestion = questions.find(
-        (question: any) => question.question === "Text"
+        (question: any) => question.question === "Text",
       )
 
       const randomBitDistinctId = window.crypto

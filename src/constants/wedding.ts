@@ -70,7 +70,7 @@ interface Config {
       label: string
       placeholder: string
     }
-    videoCaption: string
+    caption: string
     submit: string
     success: {
       title: string
@@ -200,7 +200,7 @@ export const WEDDING_CONFIG: Record<Locale, Config> = {
       detail: "coming",
       description:
         "Please RSVP no later than March 25. Fill in the form below and let us know about any dietary needs or questions.",
-      videoCaption: "Come enjoy the lovely autumn weather with us!",
+      caption: "Come enjoy the lovely autumn weather with us!",
       name: {
         label: "Names",
         placeholder: "Names from all attendees",
@@ -358,7 +358,7 @@ export const WEDDING_CONFIG: Record<Locale, Config> = {
       detail: "sua presença",
       description:
         "Por favor, responda até 25 de Março. Preencha o formulário abaixo e nos informe sobre quaisquer restrições alimentares ou perguntas que você tiver.",
-      videoCaption: "Venha aproveitar o agradável clima de outono conosco!",
+      caption: "Venha aproveitar o agradável clima de outono conosco!",
       name: {
         label: "Nomes",
         placeholder: "Nomes dos convidados, como no convite",
