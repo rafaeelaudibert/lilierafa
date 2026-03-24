@@ -20,11 +20,6 @@ export default defineConfig({
     format: "directory",
   },
 
-  // On hover, prefetch that link
-  prefetch: {
-    prefetchAll: true,
-  },
-
   // Some experimental configuration
   experimental: {
     // Prerender pages on the client when prefetching it
