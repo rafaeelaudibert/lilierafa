@@ -147,7 +147,7 @@ export const WEDDING_CONFIG: Record<Locale, Config> = {
         {
           label: "How to get there",
           description:
-            "The venue is located in a somewhat remote area and, therefore, you'll need to drive. The venue is 15 minutes from the city centre of Carlos Barbosa via the old Garibaldi road, and roughly 2 hours from Porto Alegre via Vale dos Vinhedos. There's no taxi service in the area. There's enough parking for all the guests.",
+            "The venue is located in a somewhat remote area and, therefore, you'll need to drive. The venue is 35 minutes from the city centre of Carlos Barbosa via the old Garibaldi road, and roughly 2 hours from Porto Alegre via Vale dos Vinhedos. There's no taxi service in the area. There's enough parking for all the guests.",
         },
         {
           label: "Restrictions",
@@ -309,7 +309,7 @@ export const WEDDING_CONFIG: Record<Locale, Config> = {
         {
           label: "Como chegar",
           description:
-            "O local está localizado no interior da cidade e, portanto, você precisará ir dirigindo. O local está a 15 minutos da cidade de Carlos Barbosa via Estrada Velha de Garibaldi, e aproximadamente 2 horas de Porto Alegre via Vale dos Vinhedos. Não há serviço de táxi na área. Há estacionamento suficiente para todos os convidados.",
+            "O local está localizado no interior da cidade e, portanto, você precisará ir dirigindo. O local está a 35 minutos da cidade de Carlos Barbosa via Estrada Velha de Garibaldi, e aproximadamente 2 horas de Porto Alegre via Vale dos Vinhedos. Não há serviço de táxi na área. Há estacionamento suficiente para todos os convidados.",
         },
         {
           label: "Restrições",
