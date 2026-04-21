@@ -63,22 +63,8 @@ interface Config {
   }
   rsvp: {
     title: string
-    detail: string
-    description: string
-    name: {
-      label: string
-      placeholder: string
-    }
-    extra: {
-      label: string
-      placeholder: string
-    }
+    message: string
     caption: string
-    submit: string
-    success: {
-      title: string
-      message: string
-    }
   }
   faq: {
     title: string
@@ -202,26 +188,10 @@ export const WEDDING_CONFIG: Record<Locale, Config> = {
         "Send as much or as little as you'd like, or nothing at all. We're just grateful you're celebrating with us.",
     },
     rsvp: {
-      title: "Let us know you're",
-      detail: "coming",
-      description:
-        "Please RSVP no later than March 25. Fill in the form below and let us know about any dietary needs or questions.",
+      title: "Thank you!",
+      message:
+        "We've already collected everyone's RSVP and can't wait to celebrate with you! 🎉 If you need to change your attendance, please reach out to us directly.",
       caption: "Come enjoy the lovely autumn weather with us!",
-      name: {
-        label: "Names",
-        placeholder: "Names from all attendees",
-      },
-      extra: {
-        label: "Additional information & questions",
-        placeholder:
-          "Any information we should know, or questions you might have...",
-      },
-      submit: "Submit",
-      success: {
-        title: "Thank you!",
-        message:
-          "We've received your RSVP and can't wait to celebrate with you! 🎉",
-      },
     },
     faq: {
       title: "You also might be",
@@ -363,26 +333,10 @@ export const WEDDING_CONFIG: Record<Locale, Config> = {
         "Envie o quanto você quiser - ou nada - de verdade. Já estaremos agradecidos apenas de você estar celebrando conosco.",
     },
     rsvp: {
-      title: "Confirme aqui",
-      detail: "sua presença",
-      description:
-        "Por favor, responda até 25 de Março. Preencha o formulário abaixo e nos informe sobre quaisquer restrições alimentares ou perguntas que você tiver.",
+      title: "Obrigado!",
+      message:
+        "Já coletamos a confirmação de todos e mal podemos esperar para celebrar com você! 🎉 Se você precisar alterar sua presença, por favor entre em contato diretamente conosco.",
       caption: "Venha aproveitar o agradável clima de outono conosco!",
-      name: {
-        label: "Nomes",
-        placeholder: "Nomes dos convidados, como no convite",
-      },
-      extra: {
-        label: "Informações adicionais & perguntas",
-        placeholder:
-          "Qualquer coisa que você queira nos informar, ou perguntas que você tenha.",
-      },
-      submit: "Enviar",
-      success: {
-        title: "Obrigado!",
-        message:
-          "Recebemos sua confirmação e mal podemos esperar para celebrar com você! 🎉",
-      },
     },
     faq: {
       title: "Você também pode estar",

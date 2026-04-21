@@ -9,94 +9,22 @@ const locale = getLocale(Astro.url) as Locale
 const config = WEDDING_CONFIG[locale]
 ---
 
-<section class="py-10">
-  <!-- Two-column layout with image on right, form on left -->
+<section id="rsvp" class="py-10">
+  <!-- Two-column layout with image on right, conclusion on left -->
   <div
     class="flex flex-col-reverse gap-4 lg:flex-row lg:gap-2 lg:items-stretch"
   >
-    <!-- Form column - left side -->
+    <!-- Conclusion column - left side -->
     <div
       class="flex-1 flex flex-col justify-center min-w-0 bg-[var(--theme0)] p-4"
     >
-      <!-- Header -->
-      <div class="mb-8">
-        <div
-          id="rsvp"
-          class="text-gray-400 text-sm uppercase tracking-wide mb-2"
-        >
-          RSVP
-        </div>
-        <h2
-          class="text-4xl md:text-5xl font-bold text-[var(--theme3)] leading-tight"
-        >
-          {config.rsvp.title}<br />
-          <span class="text-[var(--theme1)]">{config.rsvp.detail}</span>
-        </h2>
-      </div>
-
-      <div class="mb-8">
-        <p class="text-[var(--theme3)] text-sm mb-6">
-          {config.rsvp.description}
+      <div class="bg-[var(--theme3)] text-gray-100 rounded-lg p-12 text-center">
+        <h3 class="text-3xl md:text-4xl font-bold mb-6 leading-tight">
+          {config.rsvp.title}
+        </h3>
+        <p class="text-md leading-relaxed">
+          {config.rsvp.message}
         </p>
-      </div>
-
-      <!-- RSVP Form -->
-      <form class="space-y-6" id="rsvp-form" action="#">
-        <!-- Name field -->
-        <div>
-          <label
-            for="name"
-            class="block text-sm font-medium text-gray-700 mb-2"
-          >
-            {config.rsvp.name.label} *
-          </label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            required
-            class="w-full px-4 py-3 bg-[#f5edf1] border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--theme2)] focus:border-transparent transition-colors"
-            placeholder={config.rsvp.name.placeholder}
-          />
-        </div>
-
-        <!-- Additional info -->
-        <div>
-          <label
-            for="extra"
-            class="block text-sm font-medium text-gray-700 mb-2"
-          >
-            {config.rsvp.extra.label}
-          </label>
-          <textarea
-            id="extra"
-            name="extra"
-            rows="4"
-            class="w-full px-4 py-3 bg-[#f5edf1] border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--theme2)] focus:border-transparent transition-colors resize-none"
-            placeholder={config.rsvp.extra.placeholder}></textarea>
-        </div>
-
-        <!-- Submit button -->
-        <button
-          type="submit"
-          class="w-full bg-[var(--theme1)] text-white py-3 px-6 rounded-lg font-medium hover:bg-[var(--theme2)] transition-colors focus:ring-2 focus:ring-[var(--theme2)] focus:ring-offset-2"
-        >
-          {config.rsvp.submit}
-        </button>
-      </form>
-
-      <!-- Success State (hidden by default) -->
-      <div id="success-state" class="hidden">
-        <div
-          class="bg-[var(--theme3)] text-gray-100 rounded-lg p-12 text-center"
-        >
-          <h3 class="text-3xl md:text-4xl font-bold mb-6 leading-tight">
-            {config.rsvp.success.title}
-          </h3>
-          <p class="text-md leading-relaxed">
-            {config.rsvp.success.message}
-          </p>
-        </div>
       </div>
     </div>
 
@@ -118,89 +46,3 @@ const config = WEDDING_CONFIG[locale]
     </div>
   </div>
 </section>
-
-<script>
-  // This script is used to intercept the form and send the data to PostHog
-  // as data for a survey
-  let survey: any | null = null
-  window.posthog.getSurveys((surveys: any[]) => {
-    survey = surveys.find((survey) => survey.name === "Wedding RSVP")
-  })
-
-  // LocalStorage key for tracking submission
-  const RSVP_SUBMITTED_KEY = "wedding-rsvp-submitted-v1"
-  const RSVP_SUBMITTED_VALUE = "true"
-
-  // Get form and success state elements
-  const form: HTMLFormElement = document.querySelector("#rsvp-form")!
-  const successState: HTMLElement = document.querySelector("#success-state")!
-
-  // Function to show success state
-  function showSuccessState() {
-    form.classList.add("hidden")
-    successState.classList.remove("hidden")
-  }
-
-  // Check if RSVP was already submitted on page load
-  function checkSubmissionStatus() {
-    const isSubmitted = localStorage.getItem(RSVP_SUBMITTED_KEY)
-    if (isSubmitted === RSVP_SUBMITTED_VALUE) {
-      showSuccessState()
-    }
-  }
-
-  // Mark RSVP as submitted
-  function markRSVPAsSubmitted() {
-    localStorage.setItem(RSVP_SUBMITTED_KEY, RSVP_SUBMITTED_VALUE)
-  }
-
-  // Handle form submission
-  form.addEventListener("submit", (e) => {
-    e.preventDefault()
-
-    // Check if already submitted to prevent double submission
-    const isSubmitted = localStorage.getItem(RSVP_SUBMITTED_KEY)
-    if (isSubmitted === "true") {
-      return
-    }
-
-    if (survey) {
-      const formData = new FormData(form)
-      const responses = Object.fromEntries(formData)
-
-      const name = responses.name.toString()
-      const extra = responses.extra.toString()
-
-      const { id: surveyId, questions } = survey
-      const nameQuestion = questions.find(
-        (question: any) => question.question === "Name",
-      )
-      const textQuestion = questions.find(
-        (question: any) => question.question === "Text",
-      )
-
-      const randomBitDistinctId = window.crypto
-        ? crypto.randomUUID()
-        : Math.random().toString(36).substring(2, 15)
-      const distinctId = `${randomBitDistinctId}-${name.replace(/[^a-zA-Z0-9]/g, "")}`
-      const properties = {
-        $survey_id: surveyId,
-        [`$survey_response_${nameQuestion.id}`]: name,
-        [`$survey_response_${textQuestion.id}`]: extra,
-      }
-
-      // Capture the event and identify the user to see the responses on their profiles
-      // This will also help us identify them and see them browsing the site
-      window.posthog.capture("survey sent", properties)
-      window.posthog.identify(distinctId, { name, extra })
-    }
-
-    // Mark as submitted and show success state
-    markRSVPAsSubmitted()
-    showSuccessState()
-    window.throwConfetti?.()
-  })
-
-  // Check submission status on page load
-  document.addEventListener("DOMContentLoaded", checkSubmissionStatus)
-</script>
