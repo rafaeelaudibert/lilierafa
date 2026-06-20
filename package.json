@@ -14,7 +14,7 @@
   "dependencies": {
     "@astrojs/sitemap": "3.7.1",
     "@tailwindcss/vite": "^4.1.13",
-    "astro": "6.0.8",
+    "astro": "6.4.6",
     "astro-i18n-aut": "^0.7.3",
     "js-confetti": "^0.13.1",
     "tailwindcss": "^4.1.13"
